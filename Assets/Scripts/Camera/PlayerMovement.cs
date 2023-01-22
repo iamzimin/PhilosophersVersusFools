@@ -4,42 +4,129 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public CharacterController controller;
-    public Transform groundCheck;
-    public LayerMask groundMask;
-
+    [Header("Movement")]
     public float speed = 5f;
-    public float gravity = -9.8f;
-    public float groundDistance = 0.4f;
-    public float jumpHeight = 3f;
+    public float groundDrag;
+    public float jumpForce = 5f;
+    public float jumpCooldown = 1f;
+    public float airMultiplier = 5f;
+    bool isRedyToJump = true;
 
-    Vector3 velocity;
 
+
+    [Header("Ground Check")]
+    public float playerHight = 2f;
+    public float groundDistance = 0.2f;
+    public LayerMask whatIsGround;
     bool isGrounded;
 
-    // Update is called once per frame
+    public Transform orientation;
+    public Transform groundCheck;
+
+
+    float x;
+    float z;
+    Rigidbody rb;
+    Vector3 moveDirection;
+    Vector3 rotateDirection;
+
+    private void MyInput()
+    {
+        x = Input.GetAxisRaw("Horizontal");
+        z = Input.GetAxisRaw("Vertical");
+
+        if (Input.GetButton("Jump") && isRedyToJump && isGrounded)
+        {
+            isRedyToJump = false;
+            Jump();
+            Invoke(nameof(ResetJump), jumpCooldown);
+        }
+    }
+    private void MovePlayer()
+    {
+        moveDirection = orientation.right * x + orientation.forward * z;
+
+        rb.MoveRotation(orientation.rotation);
+
+        
+        if (isGrounded)
+            rb.AddForce(moveDirection.normalized * speed, ForceMode.Force);
+        else
+            rb.AddForce(moveDirection.normalized * speed * airMultiplier, ForceMode.Force);
+
+    }
+
+    private void SpeedControl()
+    {
+        Vector3 flatVel = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
+
+        if (flatVel.magnitude > speed)
+        {
+            Vector3 limitedVel = flatVel.normalized * speed;
+            rb.velocity = new Vector3(limitedVel.x, rb.velocity.y , limitedVel.z);
+        }
+    }
+
+    private void Jump()
+    {
+        rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
+
+        rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
+    }
+
+    private void ResetJump()
+    {
+        isRedyToJump = true;
+    }
+
+    private void Start()
+    {
+        rb = GetComponent<Rigidbody>();
+        rb.freezeRotation = true;
+    }
     void Update()
     {
-        isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
+        //isGrounded = Physics.Raycast(transform.position, Vector3.down, playerHight * 0.5f, whatIsGround);
+        isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, whatIsGround);
 
-        if (isGrounded && velocity.y < 0)
-            velocity.y = -2f;
+        MyInput();
+        SpeedControl();
+        //MovePlayer();
 
-        float x = Input.GetAxis("Horizontal");   
-        float z = Input.GetAxis("Vertical");
-
-        Vector3 move = transform.right * x + transform.forward * z;
-        controller.Move(move * speed * Time.deltaTime);
-
-        velocity.y += gravity * Time.deltaTime;
-        controller.Move(velocity * Time.deltaTime);
-
-        if (Input.GetButtonDown("Jump") && isGrounded)
-            velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
-
-        if (Input.GetKey("left shift"))
-            speed = 10f;
+        if (isGrounded)
+            rb.drag = groundDrag;
         else
-            speed = 5f;
+            rb.drag = 0;
+
+
+        /*
+        ////if (rigidbody.velocity.y == 0f)
+        //rigidbody.velocity = move * speed * Time.deltaTime;
+        ////else
+        //    //rigidbody.velocity = move * Time.deltaTime;
+
+        //controller.Move(rigidbody.velocity);
+
+        ////velocity.y += gravity * Time.deltaTime;
+
+        ////controller.Move(velocity * Time.deltaTime);
+
+        ////if (Input.GetButtonDown("Jump") && isGrounded)
+        ////    velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+
+        //if (Input.GetButtonDown("Jump") && rigidbody.velocity.y < 0f)
+        //    rigidbody.AddForce(0, jumpHeight, 0, ForceMode.Impulse);
+        //velocityY = rigidbody.velocity.y;
+
+        //if (Input.GetKey("left shift"))
+        //    speed = 10f;
+        //else
+        //    speed = 5f;
+        */
+    }
+
+    private void FixedUpdate()
+    {
+        MovePlayer();
     }
 }
