@@ -4,15 +4,8 @@ using UnityEngine;
 
 public class Enemy : Entity
 {
-    public Entity hero;
-    public Entity enemy;
-
-    private void OnCollisionEnter(Collision collision)
+    public Enemy()
     {
-        if (collision.gameObject == hero.gameObject)
-        {
-            hero.GetDamage();
-        }
+        healhPoint = base.healhPoint;
     }
-
 }

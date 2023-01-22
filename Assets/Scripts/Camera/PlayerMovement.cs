@@ -5,12 +5,13 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     [Header("Movement")]
-    public float speed = 5f;
-    public float strafeSpeed = 5f;
-    public float groundDrag;
+    public float speed = 20f;
+    private float normalSpeed;
+    public float strafeSpeed = 30f;
+    public float groundDrag = 1f;
     public float jumpForce = 5f;
     public float jumpCooldown = 1f;
-    public float airMultiplier = 5f;
+    public float airMultiplier = 0f;
     bool isRedyToJump = true;
 
 
@@ -42,6 +43,11 @@ public class PlayerMovement : MonoBehaviour
             Jump();
             Invoke(nameof(ResetJump), jumpCooldown);
         }
+
+        if (Input.GetKey(KeyCode.LeftShift))
+            speed = strafeSpeed;
+        else
+            speed = normalSpeed;
     }
     private void MovePlayer()
     {
@@ -74,7 +80,6 @@ public class PlayerMovement : MonoBehaviour
 
         rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
     }
-
     private void ResetJump()
     {
         isRedyToJump = true;
@@ -84,6 +89,8 @@ public class PlayerMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
+
+        normalSpeed = speed;
     }
     void Update()
     {
@@ -96,32 +103,6 @@ public class PlayerMovement : MonoBehaviour
             rb.drag = groundDrag;
         else
             rb.drag = 0;
-
-
-        /*
-        ////if (rigidbody.velocity.y == 0f)
-        //rigidbody.velocity = move * speed * Time.deltaTime;
-        ////else
-        //    //rigidbody.velocity = move * Time.deltaTime;
-
-        //controller.Move(rigidbody.velocity);
-
-        ////velocity.y += gravity * Time.deltaTime;
-
-        ////controller.Move(velocity * Time.deltaTime);
-
-        ////if (Input.GetButtonDown("Jump") && isGrounded)
-        ////    velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
-
-        //if (Input.GetButtonDown("Jump") && rigidbody.velocity.y < 0f)
-        //    rigidbody.AddForce(0, jumpHeight, 0, ForceMode.Impulse);
-        //velocityY = rigidbody.velocity.y;
-
-        //if (Input.GetKey("left shift"))
-        //    speed = 10f;
-        //else
-        //    speed = 5f;
-        */
     }
 
     private void FixedUpdate()
