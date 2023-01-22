@@ -14,6 +14,7 @@ public class Black : Enemy
 
     private void OnCollisionEnter(Collision collision)
     {
+
         if (hero != null && collision.gameObject == hero.gameObject)
         {
             hero.GetDamage(power);
