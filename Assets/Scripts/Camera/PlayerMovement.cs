@@ -6,6 +6,7 @@ public class PlayerMovement : MonoBehaviour
 {
     [Header("Movement")]
     public float speed = 5f;
+    public float strafeSpeed = 5f;
     public float groundDrag;
     public float jumpForce = 5f;
     public float jumpCooldown = 1f;
@@ -86,12 +87,10 @@ public class PlayerMovement : MonoBehaviour
     }
     void Update()
     {
-        //isGrounded = Physics.Raycast(transform.position, Vector3.down, playerHight * 0.5f, whatIsGround);
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, whatIsGround);
 
         MyInput();
         SpeedControl();
-        //MovePlayer();
 
         if (isGrounded)
             rb.drag = groundDrag;

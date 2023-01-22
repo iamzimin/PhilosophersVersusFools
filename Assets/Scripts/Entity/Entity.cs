@@ -10,6 +10,13 @@ public class Entity : MonoBehaviour
     public float jumpForce = 10f;
     public int healhPoint = 100;
 
+    public virtual void GetDamage()
+    {
 
+    }
+    public virtual void Die()
+    {
+        Destroy(gameObject);
+    }
 
 }
