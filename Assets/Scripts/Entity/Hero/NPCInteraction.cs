@@ -5,6 +5,7 @@ using UnityEngine;
 public class NPCInteraction : MonoBehaviour
 {
     public Camera cam;
+    public QuestionSystem questionSystem;
     public int range = 5;
     public KeyCode interactionKey = KeyCode.F;
 
@@ -14,7 +15,10 @@ public class NPCInteraction : MonoBehaviour
         if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, range))
         {
             if (hit.rigidbody.tag == "Philosopher")
-                Debug.Log("123 " + hit.rigidbody);
+            {
+                //Debug.Log("123 " + hit.rigidbody);
+                questionSystem.ActivateQuestion();
+            }
         }
     }
     void Update()
