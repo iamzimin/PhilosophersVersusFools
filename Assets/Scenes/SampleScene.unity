@@ -729,6 +729,7 @@ GameObject:
   - component: {fileID: 541311229}
   - component: {fileID: 541311231}
   - component: {fileID: 541311232}
+  - component: {fileID: 541311233}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -833,6 +834,21 @@ MonoBehaviour:
   throwKey: 323
   throwForce: 2
   throwUpwardForce: 0.4
+--- !u!114 &541311233
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 541311227}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56fe8c4705f8f85448c23994c0331c1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cam: {fileID: 963194227}
+  range: 3
+  interactionKey: 102
 --- !u!1 &563365564
 GameObject:
   m_ObjectHideFlags: 0
@@ -1412,6 +1428,7 @@ GameObject:
   m_Component:
   - component: {fileID: 959944761}
   - component: {fileID: 959944762}
+  - component: {fileID: 959944763}
   m_Layer: 0
   m_Name: Aristotel
   m_TagString: Untagged
@@ -1452,6 +1469,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!114 &959944763
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 959944760}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20d2c8579d8e49647b7ded1db87b54bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healhPoint: 100
+  power: 0
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
