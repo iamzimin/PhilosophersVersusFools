@@ -8,19 +8,24 @@ public class QuestionSystem : MonoBehaviour
     public Canvas canvas;
     
     public Image questionLayer;
-    public Image endLayer;
+    public Image winLayer;
+    public Image loseLayer;
 
     public TextMeshProUGUI questionText;
 
     public TextMeshProUGUI[] answersText = new TextMeshProUGUI[4];
 
     private QuestionAnswerList qaList;
+    QuestionAnswerList.Question q;
 
     private void Start()
     {
         qaList = GetComponent<QuestionAnswerList>();
-        
 
+        canvas.gameObject.SetActive(false);
+        questionLayer.gameObject.SetActive(false);
+        winLayer.gameObject.SetActive(false);
+        loseLayer.gameObject.SetActive(false);
     }
 
     void Update()
@@ -33,7 +38,6 @@ public class QuestionSystem : MonoBehaviour
         canvas.gameObject.SetActive(true);
         questionLayer.gameObject.SetActive(true);
 
-        QuestionAnswerList.Question q;
         q = qaList.getRandomElement();
 
         questionText.text = q.questionText;
@@ -43,6 +47,22 @@ public class QuestionSystem : MonoBehaviour
 
     }
 
+    public void DeactivateQuestion() //fixme fix me todo to do delete
+    {
+        canvas.gameObject.SetActive(false);
+        questionLayer.gameObject.SetActive(false);
+        winLayer.gameObject.SetActive(false);
+        loseLayer.gameObject.SetActive(false);
+    }
+
+    public void OnClickButton(int numBtn)
+    {
+        questionLayer.gameObject.SetActive(false);
+        if (q.rightAnswerId == numBtn)
+            winLayer.gameObject.SetActive(true);
+        else
+            loseLayer.gameObject.SetActive(true);            
+    }
 
 
 }
