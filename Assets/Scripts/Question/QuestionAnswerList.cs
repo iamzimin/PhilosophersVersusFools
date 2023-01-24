@@ -7,40 +7,112 @@ using UnityEngine;
 
 public class QuestionAnswerList : MonoBehaviour
 {
-    public class Question
+    public class QuestionChoice
     {
         public string questionText;
         public List<string> answers;
         public int rightAnswerId;
     }
-    public List<Question> questions = new List<Question>();
-
-    public void Awake()
+    public class QuestionEnter
     {
-        Question q = new Question();
-        q.questionText = "Угадай число от 1 до 4";
-        q.answers = new List<string>() { "1", "2", "3", "4" };
-        q.rightAnswerId = 3;
-        questions.Add(q);
+        public string questionText;
+        public string yourAnswer;
+        public string rightAnswer;
     }
 
-    public Question getRandomElement()
+    public List<QuestionChoice> questionsChoice = new List<QuestionChoice>();
+    QuestionChoice qChoice = new QuestionChoice();
+
+    public List<QuestionEnter> questionsEnter = new List<QuestionEnter>();
+    QuestionEnter qEnter = new QuestionEnter();
+
+    private void LoadQuestionChoice()
     {
-        if (questions.Count == 0)
+        // ---------------- ВОПРОС 1 ----------------
+        qChoice = new QuestionChoice();
+        qChoice.questionText = "Угадай число от 1 до 4";
+        qChoice.answers = new List<string>() { "1", "2", "3", "4" };
+        qChoice.rightAnswerId = 1; //отсчёт с 0
+        questionsChoice.Add(qChoice);
+
+        // ---------------- ВОПРОС 2 ----------------
+        qChoice = new QuestionChoice();
+        qChoice.questionText = "Угадай число от 5 до 8";
+        qChoice.answers = new List<string>() { "5", "6", "7", "8" };
+        qChoice.rightAnswerId = 3; //отсчёт с 0
+        questionsChoice.Add(qChoice);
+
+        // ---------------- ВОПРОС 3 ----------------
+        qChoice = new QuestionChoice();
+        qChoice.questionText = "Угадай число от 9 до 12";
+        qChoice.answers = new List<string>() { "9", "10", "11", "12" };
+        qChoice.rightAnswerId = 0; //отсчёт с 0
+        questionsChoice.Add(qChoice);
+
+        // ---------------- ВОПРОС 4 ----------------
+        qChoice = new QuestionChoice();
+        qChoice.questionText = "Угадай число от 13 до 16";
+        qChoice.answers = new List<string>() { "13", "14", "15", "16" };
+        qChoice.rightAnswerId = 2; //отсчёт с 0
+        questionsChoice.Add(qChoice);
+    }
+
+    private void LoadQuestionEnter()
+    {
+        // ---------------- ВОПРОС 1 ----------------
+        qEnter = new QuestionEnter();
+        qEnter.questionText = "Угадай число от 1 до 4";
+        qEnter.rightAnswer = "1"; //ответ строчными буквами
+        questionsEnter.Add(qEnter);
+
+        // ---------------- ВОПРОС 2 ----------------
+        qEnter = new QuestionEnter();
+        qEnter.questionText = "Угадай число от 5 до 8";
+        qEnter.rightAnswer = "6"; //ответ строчными буквами
+        questionsEnter.Add(qEnter);
+    }
+
+
+    public QuestionChoice getRandomQuestionChoice()
+    {
+        if (questionsChoice.Count == 0)
         {
-            Question q = new Question();
-            q.questionText = "Вопросы закончились :((";
-            q.answers = new List<string>() { "", "", "", "" };
-            q.rightAnswerId = 5;
-            return q;
+            qChoice.questionText = "Вопросы закончились :((";
+            qChoice.answers = new List<string>() { "", "", "", "" };
+            qChoice.rightAnswerId = 5;
+            return qChoice;
         }
 
         var rnd = new System.Random();
-        int n = rnd.Next(0, questions.Count);
+        int n = rnd.Next(0, questionsChoice.Count);
 
-        Question output = questions[n];
-        questions.RemoveAt(n);
-        return output;
+        qChoice = questionsChoice[n];
+        questionsChoice.RemoveAt(n);
+        return qChoice;
+    }
+
+    public QuestionEnter getRandomQuestionEnter()
+    {
+        if (questionsEnter.Count == 0)
+        {
+            qEnter.questionText = "Вопросы закончились :((";
+            qEnter.rightAnswer = "";
+            return qEnter;
+        }
+
+        var rnd = new System.Random();
+        int n = rnd.Next(0, questionsEnter.Count);
+
+        qEnter = questionsEnter[n];
+        questionsEnter.RemoveAt(n);
+        return qEnter;
+    }
+
+
+    public void Start()
+    {
+        LoadQuestionChoice();
+        LoadQuestionEnter();
     }
 
 

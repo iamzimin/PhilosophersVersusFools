@@ -9,22 +9,19 @@ public class NPCInteraction : MonoBehaviour
     public int range = 5;
     public KeyCode interactionKey = KeyCode.F;
 
-    private bool isUIActivate = false;
+    //private bool isUIActivate = false;
     void InteractionWithNPC()
     {
         RaycastHit hit;
         if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, range))
         {
-            if (hit.rigidbody.tag == "Philosopher" && !isUIActivate)
+            if (hit.rigidbody.tag == "Aristotel")
             {
-                //Debug.Log("123 " + hit.rigidbody);
-                questionSystem.ActivateQuestion();
-                isUIActivate = true;
+                questionSystem.ActivateQuestionChoice();
             }
-            else //fixme fix me todo to do delete
+            else if (hit.rigidbody.tag == "Sokrat")
             {
-                questionSystem.DeactivateQuestion();
-                isUIActivate = false;
+                questionSystem.ActivateQuestionEnter();
             }
         }
     }
