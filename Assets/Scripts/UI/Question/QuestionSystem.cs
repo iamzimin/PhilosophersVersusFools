@@ -25,19 +25,17 @@ public class QuestionSystem : MonoBehaviour
     public TextMeshProUGUI questionTextEnter;
     public TMP_InputField answerTextEnter;
 
-
+    [Header("Hero")]
+    public Hero hero;
 
 
     private QuestionAnswerList qaList;
     private QuestionAnswerList.QuestionChoice qChoice;
     private QuestionAnswerList.QuestionEnter qEnter;
 
-    private void Start()
-    {
-        qaList = GetComponent<QuestionAnswerList>();
+    private int rewardChoice = 10;
+    private int rewardEnter = 50;
 
-        DeactivateQuestions();
-    }
     public void DeactivateQuestions()
     {
         canvas.gameObject.SetActive(false);
@@ -78,7 +76,10 @@ public class QuestionSystem : MonoBehaviour
     {
         questionLayerChoice.gameObject.SetActive(false);
         if (qChoice.rightAnswerId == numBtn)
+        {
             winLayerChoice.gameObject.SetActive(true);
+            hero.coins += rewardChoice;
+        }
         else
             loseLayerChoice.gameObject.SetActive(true);            
     }
@@ -92,7 +93,10 @@ public class QuestionSystem : MonoBehaviour
         if (!s1.Equals(""))
         {
             if (Equals(s1, s2))
+            {
                 winLayerEnter.gameObject.SetActive(true);
+                hero.coins += rewardEnter;
+            }
             else
                 loseLayerEnter.gameObject.SetActive(true);
         }
@@ -102,4 +106,10 @@ public class QuestionSystem : MonoBehaviour
     }
 
 
+    private void Start()
+    {
+        qaList = GetComponent<QuestionAnswerList>();
+
+        DeactivateQuestions();
+    }
 }

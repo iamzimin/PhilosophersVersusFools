@@ -24,9 +24,9 @@ public class NPCInteraction : MonoBehaviour
             {
                 questionSystem.ActivateQuestionEnter();
             }
-            else if (hit.rigidbody.tag == "Seller")
+            else if (hit.rigidbody.tag == "Trader")
             {
-                //shopManager
+                shopManager.ActivateShop();
             }
         }
     }
