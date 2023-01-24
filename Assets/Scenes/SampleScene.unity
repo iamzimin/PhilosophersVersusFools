@@ -479,7 +479,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -138.3}
+  m_AnchoredPosition: {x: 0, y: -138.29999}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &153442372
@@ -842,7 +842,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &173707052
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2481,6 +2481,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cam: {fileID: 963194227}
   questionSystem: {fileID: 1300161457}
+  shopManager: {fileID: 0}
   range: 3
   interactionKey: 102
 --- !u!1 &544881290
@@ -3382,7 +3383,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &631221693
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7245,8 +7246,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1300161456}
-  - component: {fileID: 1300161457}
   - component: {fileID: 1300161458}
+  - component: {fileID: 1300161457}
+  - component: {fileID: 1300161459}
   m_Layer: 0
   m_Name: UI
   m_TagString: Untagged
@@ -7309,6 +7311,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3bc7f5f7e26ee34c84ffedfee87eeac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1300161459
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1300161455}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb2872678aa3dcf4bbfe1459796ce808, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canvas: {fileID: 1433844187}
+  hero: {fileID: 541311231}
+  player: {fileID: 541311229}
 --- !u!1 &1311266646
 GameObject:
   m_ObjectHideFlags: 0

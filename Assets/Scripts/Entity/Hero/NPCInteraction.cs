@@ -6,6 +6,7 @@ public class NPCInteraction : MonoBehaviour
 {
     public Camera cam;
     public QuestionSystem questionSystem;
+    public ShopManager shopManager;
     public int range = 5;
     public KeyCode interactionKey = KeyCode.F;
 
@@ -22,6 +23,10 @@ public class NPCInteraction : MonoBehaviour
             else if (hit.rigidbody.tag == "Sokrat")
             {
                 questionSystem.ActivateQuestionEnter();
+            }
+            else if (hit.rigidbody.tag == "Seller")
+            {
+                //shopManager
             }
         }
     }
