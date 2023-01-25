@@ -17,6 +17,9 @@ public class QuestionSystem : MonoBehaviour
     public TextMeshProUGUI rewardTextChoice;
     public TextMeshProUGUI[] answersTextChoice = new TextMeshProUGUI[4];
 
+    public TextMeshProUGUI[] compareYourChoice = new TextMeshProUGUI[2];
+    public TextMeshProUGUI[] compareRightChoice = new TextMeshProUGUI[2];
+
 
     [Header("QuestionWithEnter")]
     public Image questionLayerEnter;
@@ -26,6 +29,9 @@ public class QuestionSystem : MonoBehaviour
     public TextMeshProUGUI[] questionTextEnter = new TextMeshProUGUI[3];
     public TextMeshProUGUI rewardTextEnter;
     public TMP_InputField answerTextEnter;
+
+    public TextMeshProUGUI[] compareYourEnter = new TextMeshProUGUI[2];
+    public TextMeshProUGUI[] compareRightEnter = new TextMeshProUGUI[2];
 
     [Header("Hero")]
     public Hero hero;
@@ -38,6 +44,12 @@ public class QuestionSystem : MonoBehaviour
 
     private int rewardChoice = 10;
     private int rewardEnter = 50;
+
+    private string yourAnswer = "Ваш ответ: ";
+    private string rightAnswer = "Правельный ответ: ";
+
+
+
 
     public void DeactivateQuestions()
     {
@@ -100,6 +112,8 @@ public class QuestionSystem : MonoBehaviour
         string s1 = answerTextEnter.text.ToString().ToLower();
         string s2 = qEnter.rightAnswer.ToString().ToLower();
 
+        UpdateCompareEnter();
+
         if (!s1.Equals(""))
         {
             if (Equals(s1, s2))
@@ -116,6 +130,27 @@ public class QuestionSystem : MonoBehaviour
         answerTextEnter.text = "";
     }
 
+    private void UpdateCompareChoice()
+    {
+        for (int i = 0; i < compareYourChoice.Length; i++)
+        {
+            //compareYourChoice[i].text = 
+        }
+
+        for (int i = 0; i < compareYourChoice.Length; i++)
+        {
+
+        }
+    }
+
+    private void UpdateCompareEnter()
+    {
+        for (int i = 0; i < compareYourEnter.Length; i++)
+            compareYourEnter[i].text = yourAnswer + answerTextEnter.text.ToString();
+
+        for (int i = 0; i < compareYourEnter.Length; i++)
+            compareRightEnter[i].text = rightAnswer + qEnter.rightAnswer.ToString().ToLower();
+    }
 
     private void Start()
     {
