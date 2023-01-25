@@ -27,6 +27,7 @@ public class QuestionSystem : MonoBehaviour
 
     [Header("Hero")]
     public Hero hero;
+    public CoinsManager coinsManager;
 
 
     private QuestionAnswerList qaList;
@@ -50,6 +51,8 @@ public class QuestionSystem : MonoBehaviour
     }
     public void ActivateQuestionChoice()
     {
+        coinsManager.UpdateCoins();
+
         canvas.gameObject.SetActive(true);
         questionLayerChoice.gameObject.SetActive(true);
 
@@ -77,8 +80,9 @@ public class QuestionSystem : MonoBehaviour
         questionLayerChoice.gameObject.SetActive(false);
         if (qChoice.rightAnswerId == numBtn)
         {
-            winLayerChoice.gameObject.SetActive(true);
             hero.coins += rewardChoice;
+            coinsManager.UpdateCoins();
+            winLayerChoice.gameObject.SetActive(true);
         }
         else
             loseLayerChoice.gameObject.SetActive(true);            
@@ -94,8 +98,9 @@ public class QuestionSystem : MonoBehaviour
         {
             if (Equals(s1, s2))
             {
-                winLayerEnter.gameObject.SetActive(true);
                 hero.coins += rewardEnter;
+                coinsManager.UpdateCoins();
+                winLayerEnter.gameObject.SetActive(true);
             }
             else
                 loseLayerEnter.gameObject.SetActive(true);

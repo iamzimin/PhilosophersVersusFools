@@ -16,8 +16,7 @@ public class ShopManager : MonoBehaviour
     public Image shop;
 
     public TextMeshProUGUI[] cost = new TextMeshProUGUI[4];
-    public TextMeshProUGUI coins;
-
+    public CoinsManager coinsManager;
     public void DeactivateShop()
     {
         canvas.gameObject.SetActive(false);
@@ -25,10 +24,12 @@ public class ShopManager : MonoBehaviour
     }
     public void ActivateShop()
     {
+        coinsManager.UpdateCoins();
+
         canvas.gameObject.SetActive(true);
         shop.gameObject.SetActive(true);
 
-        UpdateCoins();
+        coinsManager.UpdateCoins();
     }
 
     public void OnClickButtonBuy(string pick)
@@ -52,7 +53,7 @@ public class ShopManager : MonoBehaviour
             DeleteCoins(3);
         }
 
-        UpdateCoins();
+        coinsManager.UpdateCoins();
     }
 
     private void DeleteCoins(int ID)
@@ -64,11 +65,6 @@ public class ShopManager : MonoBehaviour
             hero.coins = diff;
             cost[ID].text = (money + 10).ToString();
         }
-    }
-
-    public void UpdateCoins()
-    {
-        coins.text = hero.coins.ToString();
     }
 
 
