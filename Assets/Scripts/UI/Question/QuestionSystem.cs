@@ -14,6 +14,7 @@ public class QuestionSystem : MonoBehaviour
     public Image loseLayerChoice;
 
     public TextMeshProUGUI questionTextChoice;
+    public TextMeshProUGUI rewardTextChoice;
     public TextMeshProUGUI[] answersTextChoice = new TextMeshProUGUI[4];
 
 
@@ -23,6 +24,7 @@ public class QuestionSystem : MonoBehaviour
     public Image loseLayerEnter;
 
     public TextMeshProUGUI questionTextEnter;
+    public TextMeshProUGUI rewardTextEnter;
     public TMP_InputField answerTextEnter;
 
     [Header("Hero")]
@@ -66,6 +68,8 @@ public class QuestionSystem : MonoBehaviour
     
     public void ActivateQuestionEnter()
     {
+        coinsManager.UpdateCoins();
+
         canvas.gameObject.SetActive(true);
         questionLayerEnter.gameObject.SetActive(true);
 
@@ -116,5 +120,8 @@ public class QuestionSystem : MonoBehaviour
         qaList = GetComponent<QuestionAnswerList>();
 
         DeactivateQuestions();
+
+        rewardTextChoice.text = rewardChoice.ToString();
+        rewardTextEnter.text = rewardEnter.ToString();
     }
 }
