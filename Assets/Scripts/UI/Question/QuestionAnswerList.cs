@@ -32,14 +32,14 @@ public class QuestionAnswerList : MonoBehaviour
         qChoice = new QuestionChoice();
         qChoice.questionText = "”гадай число от 1 до 4";
         qChoice.answers = new List<string>() { "1", "2", "3", "4" };
-        qChoice.rightAnswerId = 1; //отсчЄт с 0
+        qChoice.rightAnswerId = 0; //отсчЄт с 0
         questionsChoice.Add(qChoice);
 
         // ---------------- ¬ќѕ–ќ— 2 ----------------
         qChoice = new QuestionChoice();
         qChoice.questionText = "”гадай число от 5 до 8";
         qChoice.answers = new List<string>() { "5", "6", "7", "8" };
-        qChoice.rightAnswerId = 3; //отсчЄт с 0
+        qChoice.rightAnswerId = 0; //отсчЄт с 0
         questionsChoice.Add(qChoice);
 
         // ---------------- ¬ќѕ–ќ— 3 ----------------
@@ -53,7 +53,7 @@ public class QuestionAnswerList : MonoBehaviour
         qChoice = new QuestionChoice();
         qChoice.questionText = "”гадай число от 13 до 16";
         qChoice.answers = new List<string>() { "13", "14", "15", "16" };
-        qChoice.rightAnswerId = 2; //отсчЄт с 0
+        qChoice.rightAnswerId = 0; //отсчЄт с 0
         questionsChoice.Add(qChoice);
     }
 

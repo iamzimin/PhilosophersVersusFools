@@ -46,7 +46,7 @@ public class QuestionSystem : MonoBehaviour
     private int rewardEnter = 50;
 
     private string yourAnswer = "Ваш ответ: ";
-    private string rightAnswer = "Правельный ответ: ";
+    private string rightAnswer = "Правильный ответ: ";
 
 
 
@@ -96,6 +96,9 @@ public class QuestionSystem : MonoBehaviour
     public void OnClickButtonChoice(int numBtn)
     {
         questionLayerChoice.gameObject.SetActive(false);
+
+        UpdateCompareChoice(numBtn);
+
         if (qChoice.rightAnswerId == numBtn)
         {
             hero.coins += rewardChoice;
@@ -130,17 +133,13 @@ public class QuestionSystem : MonoBehaviour
         answerTextEnter.text = "";
     }
 
-    private void UpdateCompareChoice()
+    private void UpdateCompareChoice(int numBtn)
     {
         for (int i = 0; i < compareYourChoice.Length; i++)
-        {
-            //compareYourChoice[i].text = 
-        }
+            compareYourChoice[i].text = yourAnswer + answersTextChoice[numBtn].text;
 
-        for (int i = 0; i < compareYourChoice.Length; i++)
-        {
-
-        }
+        for (int i = 0; i < compareRightChoice.Length; i++)
+            compareRightChoice[i].text = rightAnswer + answersTextChoice[qChoice.rightAnswerId].text;
     }
 
     private void UpdateCompareEnter()
@@ -148,7 +147,7 @@ public class QuestionSystem : MonoBehaviour
         for (int i = 0; i < compareYourEnter.Length; i++)
             compareYourEnter[i].text = yourAnswer + answerTextEnter.text.ToString();
 
-        for (int i = 0; i < compareYourEnter.Length; i++)
+        for (int i = 0; i < compareRightEnter.Length; i++)
             compareRightEnter[i].text = rightAnswer + qEnter.rightAnswer.ToString().ToLower();
     }
 

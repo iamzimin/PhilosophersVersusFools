@@ -4191,7 +4191,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Button2
+  m_text: Button3
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -5169,6 +5169,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1260148790}
     m_Modifications:
+    - target: {fileID: 8715002792047780046, guid: 174441e2a13f5b54cb9ded4309eaf4df, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -12.970001
+      objectReference: {fileID: 0}
     - target: {fileID: 8715002793345324246, guid: 174441e2a13f5b54cb9ded4309eaf4df, type: 3}
       propertyPath: m_Name
       value: CompareAnswers
@@ -6051,7 +6055,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Button3
+  m_text: Button2
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -8416,8 +8420,8 @@ MonoBehaviour:
   rewardTextChoice: {fileID: 1851940552}
   answersTextChoice:
   - {fileID: 579402215}
-  - {fileID: 638947025}
   - {fileID: 955726233}
+  - {fileID: 638947025}
   - {fileID: 1464696857}
   compareYourChoice:
   - {fileID: 1262414064}
@@ -11312,6 +11316,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1944958381}
     m_Modifications:
+    - target: {fileID: 8715002792047780046, guid: 174441e2a13f5b54cb9ded4309eaf4df, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -12.970001
+      objectReference: {fileID: 0}
     - target: {fileID: 8715002793345324246, guid: 174441e2a13f5b54cb9ded4309eaf4df, type: 3}
       propertyPath: m_Name
       value: CompareAnswers
@@ -12335,6 +12343,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 818714287}
     m_Modifications:
+    - target: {fileID: 8715002792047780046, guid: 174441e2a13f5b54cb9ded4309eaf4df, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -12.970001
+      objectReference: {fileID: 0}
     - target: {fileID: 8715002793345324246, guid: 174441e2a13f5b54cb9ded4309eaf4df, type: 3}
       propertyPath: m_Name
       value: CompareAnswers
@@ -14182,6 +14194,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 153442373}
     m_Modifications:
+    - target: {fileID: 8715002792047780046, guid: 174441e2a13f5b54cb9ded4309eaf4df, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -12.970001
+      objectReference: {fileID: 0}
     - target: {fileID: 8715002793345324246, guid: 174441e2a13f5b54cb9ded4309eaf4df, type: 3}
       propertyPath: m_Name
       value: CompareAnswers
