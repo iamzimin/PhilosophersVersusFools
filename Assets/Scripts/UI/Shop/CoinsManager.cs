@@ -14,8 +14,11 @@ public class CoinsManager : MonoBehaviour
     {
         for (int i = 0; i < coins.Length; i++)
             coins[i].text = hero.coins.ToString();
-        
     }
 
+    public void AddCoinsToPlayer(int reward)
+    {
+        hero.coins += reward;
+    }
     
 }

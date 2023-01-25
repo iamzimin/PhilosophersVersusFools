@@ -34,7 +34,7 @@ public class QuestionSystem : MonoBehaviour
     public TextMeshProUGUI[] compareRightEnter = new TextMeshProUGUI[2];
 
     [Header("Hero")]
-    public Hero hero;
+    //public Hero hero;
     public CoinsManager coinsManager;
 
 
@@ -63,6 +63,7 @@ public class QuestionSystem : MonoBehaviour
         winLayerEnter.gameObject.SetActive(false);
         loseLayerEnter.gameObject.SetActive(false);
     }
+
     public void ActivateQuestionChoice()
     {
         coinsManager.UpdateCoins();
@@ -101,13 +102,22 @@ public class QuestionSystem : MonoBehaviour
 
         if (qChoice.rightAnswerId == numBtn)
         {
-            hero.coins += rewardChoice;
+            coinsManager.AddCoinsToPlayer(rewardChoice);
             coinsManager.UpdateCoins();
             winLayerChoice.gameObject.SetActive(true);
         }
         else
-            loseLayerChoice.gameObject.SetActive(true);            
+            loseLayerChoice.gameObject.SetActive(true);
     }
+    private void UpdateCompareChoice(int numBtn)
+    {
+        for (int i = 0; i < compareYourChoice.Length; i++)
+            compareYourChoice[i].text = yourAnswer + answersTextChoice[numBtn].text;
+
+        for (int i = 0; i < compareRightChoice.Length; i++)
+            compareRightChoice[i].text = rightAnswer + answersTextChoice[qChoice.rightAnswerId].text;
+    }
+
     public void OnClickButtonEnter()
     {
         questionLayerEnter.gameObject.SetActive(false);
@@ -121,7 +131,7 @@ public class QuestionSystem : MonoBehaviour
         {
             if (Equals(s1, s2))
             {
-                hero.coins += rewardEnter;
+                coinsManager.AddCoinsToPlayer(rewardEnter);
                 coinsManager.UpdateCoins();
                 winLayerEnter.gameObject.SetActive(true);
             }
@@ -132,16 +142,6 @@ public class QuestionSystem : MonoBehaviour
 
         answerTextEnter.text = "";
     }
-
-    private void UpdateCompareChoice(int numBtn)
-    {
-        for (int i = 0; i < compareYourChoice.Length; i++)
-            compareYourChoice[i].text = yourAnswer + answersTextChoice[numBtn].text;
-
-        for (int i = 0; i < compareRightChoice.Length; i++)
-            compareRightChoice[i].text = rightAnswer + answersTextChoice[qChoice.rightAnswerId].text;
-    }
-
     private void UpdateCompareEnter()
     {
         for (int i = 0; i < compareYourEnter.Length; i++)
