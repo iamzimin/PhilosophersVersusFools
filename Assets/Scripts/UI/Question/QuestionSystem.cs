@@ -13,7 +13,7 @@ public class QuestionSystem : MonoBehaviour
     public Image winLayerChoice;
     public Image loseLayerChoice;
 
-    public TextMeshProUGUI questionTextChoice;
+    public TextMeshProUGUI[] questionTextChoice = new TextMeshProUGUI[3];
     public TextMeshProUGUI rewardTextChoice;
     public TextMeshProUGUI[] answersTextChoice = new TextMeshProUGUI[4];
 
@@ -23,7 +23,7 @@ public class QuestionSystem : MonoBehaviour
     public Image winLayerEnter;
     public Image loseLayerEnter;
 
-    public TextMeshProUGUI questionTextEnter;
+    public TextMeshProUGUI[] questionTextEnter = new TextMeshProUGUI[3];
     public TextMeshProUGUI rewardTextEnter;
     public TMP_InputField answerTextEnter;
 
@@ -60,7 +60,8 @@ public class QuestionSystem : MonoBehaviour
 
         qChoice = qaList.getRandomQuestionChoice();
 
-        questionTextChoice.text = qChoice.questionText;
+        for (int i = 0; i < questionTextChoice.Length; i++)
+            questionTextChoice[i].text = qChoice.questionText;
 
         for (int i = 0; i < answersTextChoice.Length; i++)
             answersTextChoice[i].text = qChoice.answers[i];
@@ -75,7 +76,8 @@ public class QuestionSystem : MonoBehaviour
 
         qEnter = qaList.getRandomQuestionEnter();
 
-        questionTextEnter.text = qEnter.questionText;       
+        for (int i = 0; i < questionTextEnter.Length; i++)
+            questionTextEnter[i].text = qEnter.questionText;
     }
 
 
