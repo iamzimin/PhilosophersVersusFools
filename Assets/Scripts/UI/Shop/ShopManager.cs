@@ -9,14 +9,16 @@ public class ShopManager : MonoBehaviour
 {
     public Canvas canvas;
 
-    [Header("ShopManager")]
-    public Hero hero;
-    public PlayerMovement player; //fixme
-
+    [Header("Shop Manager")]
     public Image shop;
 
     public TextMeshProUGUI[] cost = new TextMeshProUGUI[4];
     public CoinsManager coinsManager;
+
+    [Header("To Upgrade")]
+    public Hero hero;
+    public Book book;
+
     public void DeactivateShop()
     {
         canvas.gameObject.SetActive(false);
@@ -38,25 +40,29 @@ public class ShopManager : MonoBehaviour
 
         if (pick == "damage")
         {
-            DeleteCoins(0);
+            UpdateCost(0);
+            book.damage += book.damage / 5;
         }
         else if(pick == "health")
         {
-            DeleteCoins(1);
+            UpdateCost(1);
+            hero.healhPoint += hero.healhPoint / 5;
         }
         else if(pick == "speed")
         {
-            DeleteCoins(2);
+            UpdateCost(2);
+            hero.speed += hero.speed / 5;
         }
         else if(pick == "jump")
         {
-            DeleteCoins(3);
+            UpdateCost(3);
+            hero.jumpForce += hero.jumpForce / 5;
         }
 
         coinsManager.UpdateCoins();
     }
 
-    private void DeleteCoins(int ID)
+    private void UpdateCost(int ID)
     {
         int money = Int32.Parse(cost[ID].text);
         int diff = hero.coins - money;

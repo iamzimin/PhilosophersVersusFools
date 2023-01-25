@@ -19,6 +19,17 @@ public class CoinsManager : MonoBehaviour
     public void AddCoinsToPlayer(int reward)
     {
         hero.coins += reward;
+    }    
+    
+    public void DeleteCoins(int amount)
+    {
+        hero.coins -= amount;
+    }    
+
+    public int GetCoins()
+    {
+        return hero.coins;
     }
+
     
 }

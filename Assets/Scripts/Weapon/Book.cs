@@ -7,11 +7,12 @@ public class Book : MonoBehaviour
 {
     private Rigidbody rb;
     private bool targetHit;
-    public int damage = 20;
+    public int damage;
     //public int deleteBookTime = 2;
 
     private void Start()
     {
+        damage = 20;
         rb = GetComponent<Rigidbody>();
     }
 

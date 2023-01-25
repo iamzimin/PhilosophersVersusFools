@@ -2775,8 +2775,8 @@ GameObject:
   m_Component:
   - component: {fileID: 541311228}
   - component: {fileID: 541311230}
-  - component: {fileID: 541311229}
   - component: {fileID: 541311231}
+  - component: {fileID: 541311229}
   - component: {fileID: 541311232}
   - component: {fileID: 541311233}
   m_Layer: 0
@@ -2820,12 +2820,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38e4955eb3487ea42806c2ee2dfa33cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 20
-  strafeSpeed: 30
-  groundDrag: 1
-  jumpForce: 5
-  jumpCooldown: 1
-  airMultiplier: 0
+  hero: {fileID: 541311231}
+  isRedyToJump: 1
   playerHight: 2
   groundDistance: 0.2
   whatIsGround:
@@ -2863,7 +2859,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healhPoint: 500
   power: 40
-  coins: 0
+  speed: 20
+  strafeSpeed: 30
+  groundDrag: 1
+  jumpForce: 5
+  jumpCooldown: 1
+  airMultiplier: 0
+  coins: 100
 --- !u!114 &541311232
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7576,7 +7578,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!54 &1207317116
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -8191,8 +8193,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvas: {fileID: 1433844187}
-  hero: {fileID: 541311231}
-  player: {fileID: 541311229}
   shop: {fileID: 1970071474}
   cost:
   - {fileID: 1314934835}
@@ -8200,6 +8200,8 @@ MonoBehaviour:
   - {fileID: 588463325}
   - {fileID: 276973992}
   coinsManager: {fileID: 1300161460}
+  hero: {fileID: 541311231}
+  book: {fileID: 0}
 --- !u!114 &1300161460
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12693,7 +12695,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1984223974
 Transform:
   m_ObjectHideFlags: 0

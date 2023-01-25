@@ -4,15 +4,17 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    public Hero hero;
+
     [Header("Movement")]
-    public float speed = 20f;
+    private float speed;
     private float normalSpeed;
-    public float strafeSpeed = 30f;
-    public float groundDrag = 1f;
-    public float jumpForce = 5f;
-    public float jumpCooldown = 1f;
-    public float airMultiplier = 0f;
-    bool isRedyToJump = true;
+    private float strafeSpeed;
+    private float groundDrag;
+    private float jumpForce;
+    private float jumpCooldown;
+    private float airMultiplier;
+    public bool isRedyToJump = true;
 
 
 
@@ -84,16 +86,29 @@ public class PlayerMovement : MonoBehaviour
     {
         isRedyToJump = true;
     }
+    
+    public void UpdateCharacteristics()
+    {
+        speed = hero.speed;
+        normalSpeed = speed;
+        strafeSpeed = hero.strafeSpeed;
+        groundDrag = hero.groundDrag;
+        jumpForce = hero.jumpForce;
+        jumpCooldown = hero.jumpCooldown;
+        airMultiplier = hero.airMultiplier;
+    }
 
     private void Start()
     {
+        UpdateCharacteristics();
+
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
-
-        normalSpeed = speed;
     }
     void Update()
     {
+        UpdateCharacteristics(); //fixme
+
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, whatIsGround);
 
         MyInput();
