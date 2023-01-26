@@ -53,7 +53,7 @@ public class QuestionSystem : MonoBehaviour
 
     public void DeactivateQuestions()
     {
-        canvas.gameObject.SetActive(false);
+        //canvas.gameObject.SetActive(false);
 
         questionLayerChoice.gameObject.SetActive(false);
         winLayerChoice.gameObject.SetActive(false);
@@ -68,7 +68,7 @@ public class QuestionSystem : MonoBehaviour
     {
         coinsManager.UpdateCoins();
 
-        canvas.gameObject.SetActive(true);
+        //canvas.gameObject.SetActive(true);
         questionLayerChoice.gameObject.SetActive(true);
 
         qChoice = qaList.getRandomQuestionChoice();
@@ -84,7 +84,7 @@ public class QuestionSystem : MonoBehaviour
     {
         coinsManager.UpdateCoins();
 
-        canvas.gameObject.SetActive(true);
+        //canvas.gameObject.SetActive(true);
         questionLayerEnter.gameObject.SetActive(true);
 
         qEnter = qaList.getRandomQuestionEnter();
