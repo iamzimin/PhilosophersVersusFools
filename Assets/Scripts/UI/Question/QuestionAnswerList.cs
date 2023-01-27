@@ -63,14 +63,14 @@ public class QuestionAnswerList : MonoBehaviour
     {
         // ---------------- ВОПРОС 1 ----------------
         qEnter = new QuestionEnter();
-        qEnter.questionText = "Угадай число от 1 до 4";
-        qEnter.rightAnswer = "1"; //ответ строчными буквами
+        qEnter.questionText = "Какой древнегреческий мыслитель считал, что главная задача состоит в самопознании";
+        qEnter.rightAnswer = "сократ"; //ответ строчными буквами
         questionsEnter.Add(qEnter);
 
         // ---------------- ВОПРОС 2 ----------------
         qEnter = new QuestionEnter();
-        qEnter.questionText = "Угадай число от 5 до 8";
-        qEnter.rightAnswer = "6"; //ответ строчными буквами
+        qEnter.questionText = "Какой древнегреческий философ считал огонь основой всего";
+        qEnter.rightAnswer = "Гераклит"; //ответ строчными буквами
         questionsEnter.Add(qEnter);
     }
 

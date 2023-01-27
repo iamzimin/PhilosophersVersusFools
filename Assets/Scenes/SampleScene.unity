@@ -8873,8 +8873,8 @@ MonoBehaviour:
   - {fileID: 834035364}
   timeTextEnter: {fileID: 279621345}
   isPickEnter: 0
-  timerEnter: 6
-  timeEnter: 6
+  timerEnter: 10
+  timeEnter: 10
   noQuestions: {fileID: 1397290023}
   rewardChoice: 10
   rewardEnter: 50
