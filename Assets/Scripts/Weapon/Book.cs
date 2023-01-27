@@ -8,6 +8,7 @@ public class Book : MonoBehaviour
     private Rigidbody rb;
     private bool targetHit;
     public int damage;
+    public Transform parent;
     //public int deleteBookTime = 2;
 
     private void Start()
@@ -32,7 +33,7 @@ public class Book : MonoBehaviour
             //Destroy(gameObject);
 
         }
-        transform.SetParent(collision.transform);
+        transform.SetParent(parent.transform);
     }
 
 }

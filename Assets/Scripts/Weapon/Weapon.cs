@@ -38,16 +38,17 @@ public class Weapon : MonoBehaviour
 
         GameObject projectile = Instantiate(objectToThrow, attackPoint.position, cam.rotation);
         Rigidbody projectileRb = projectile.GetComponent<Rigidbody>();
+
         Vector3 forceDirection = cam.transform.forward;
         RaycastHit hit;
 
-        if (Physics.Raycast(cam.position, cam.forward, out hit, 500f))
+        if (Physics.Raycast(cam.position, cam.forward, out hit, 1000f))
             forceDirection = (hit.point - attackPoint.position).normalized;
 
         Vector3 forceToAdd = forceDirection * throwForce + transform.up * throwUpwardForce;
 
         projectileRb.AddForce(forceToAdd, ForceMode.Impulse);
-        totalThrows--;
+        //totalThrows--;
 
         Invoke(nameof(ResetThrow), throwCooldown);
     }
