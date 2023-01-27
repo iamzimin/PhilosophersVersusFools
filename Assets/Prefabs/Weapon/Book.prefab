@@ -127,5 +127,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aedb9502a35cf6f4f9116414e478d2ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  blood: {fileID: 4901409477911375667, guid: 362306afa31df324497644f61fd57d9e, type: 3}
   damage: 50
   deleteTime: 5

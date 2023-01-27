@@ -30,31 +30,33 @@ public class QuestionAnswerList : MonoBehaviour
     {
         // ---------------- ВОПРОС 1 ----------------
         qChoice = new QuestionChoice();
-        qChoice.questionText = "Угадай число от 1 до 4";
-        qChoice.answers = new List<string>() { "1", "2", "3", "4" };
-        qChoice.rightAnswerId = 0; //отсчёт с 0
+        qChoice.questionText = "Основателем этики в западноевропейской философии считаеться:";
+        qChoice.answers = new List<string>() { "Аристотель", "Сократ", "Фалес", "Платон" };
+        qChoice.rightAnswerId = 1; //отсчёт с 0
         questionsChoice.Add(qChoice);
 
         // ---------------- ВОПРОС 2 ----------------
         qChoice = new QuestionChoice();
-        qChoice.questionText = "Угадай число от 5 до 8";
-        qChoice.answers = new List<string>() { "5", "6", "7", "8" };
-        qChoice.rightAnswerId = 0; //отсчёт с 0
+        qChoice.questionText = "Все тела в мире имеют цель своего движения и развития, которая заданна Богом как причиной всех причин, считал:";
+        qChoice.answers = new List<string>() { "Пиррон", "Зенон", "Аристотель", "Диоген" };
+        qChoice.rightAnswerId = 2; //отсчёт с 0
         questionsChoice.Add(qChoice);
 
         // ---------------- ВОПРОС 3 ----------------
         qChoice = new QuestionChoice();
-        qChoice.questionText = "Угадай число от 9 до 12";
-        qChoice.answers = new List<string>() { "9", "10", "11", "12" };
+        qChoice.questionText = "\"В одну и туже реку нельзя войти дважды\", - говорил:";
+        qChoice.answers = new List<string>() { "Гераклит", "Левкипп", "Фалес", "Анаксимандр" };
         qChoice.rightAnswerId = 0; //отсчёт с 0
         questionsChoice.Add(qChoice);
 
         // ---------------- ВОПРОС 4 ----------------
         qChoice = new QuestionChoice();
-        qChoice.questionText = "Угадай число от 13 до 16";
-        qChoice.answers = new List<string>() { "13", "14", "15", "16" };
-        qChoice.rightAnswerId = 0; //отсчёт с 0
+        qChoice.questionText = "Наиболее известна и исторически значима в системе Эпикура:";
+        qChoice.answers = new List<string>() { "Гносеология", "Онтология", "Физика", "Этика" };
+        qChoice.rightAnswerId = 3; //отсчёт с 0
         questionsChoice.Add(qChoice);
+
+        
     }
 
     private void LoadQuestionEnter()

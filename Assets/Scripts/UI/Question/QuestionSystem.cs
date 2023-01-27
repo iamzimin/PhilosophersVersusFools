@@ -111,11 +111,14 @@ public class QuestionSystem : MonoBehaviour
     }
     private void UpdateCompareChoice(int numBtn)
     {
-        for (int i = 0; i < compareYourChoice.Length; i++)
-            compareYourChoice[i].text = yourAnswer + answersTextChoice[numBtn].text;
+        if (qChoice.rightAnswerId != -1)
+        {
+            for (int i = 0; i < compareYourChoice.Length; i++)
+                compareYourChoice[i].text = yourAnswer + answersTextChoice[numBtn].text;
 
-        for (int i = 0; i < compareRightChoice.Length; i++)
-            compareRightChoice[i].text = rightAnswer + answersTextChoice[qChoice.rightAnswerId].text;
+            for (int i = 0; i < compareRightChoice.Length; i++)
+                compareRightChoice[i].text = rightAnswer + answersTextChoice[qChoice.rightAnswerId].text;
+        }
     }
 
     public void OnClickButtonEnter()

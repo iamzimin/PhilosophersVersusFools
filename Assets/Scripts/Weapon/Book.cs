@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class Book : MonoBehaviour
 {
+    public GameObject blood;
     private bool targetHit;
     public int damage = 50;
     public float deleteTime = 5f;
@@ -24,11 +25,18 @@ public class Book : MonoBehaviour
 
             enemy.GetDamage(damage);
 
+
+
+            GameObject bloodClone = Instantiate(blood, transform.position, transform.rotation);
+            Destroy(bloodClone, 2);
+
             //Destroy(gameObject);
 
         }
         Invoke(nameof(DeleteBook), deleteTime);
         //transform.SetParent(parent.transform);
+
+        //transform.SetParent(collision.transform);
         //Destroy(gameObject);
     }
 
