@@ -7,8 +7,10 @@ public class NPCInteraction : MonoBehaviour
     public Camera cam;
     public QuestionSystem questionSystem;
     public ShopManager shopManager;
+    public QuestionTimer questionTimer;
     public int range = 5;
     public KeyCode interactionKey = KeyCode.F;
+
 
     //private bool isUIActivate = false;
     void InteractionWithNPC()
@@ -16,12 +18,14 @@ public class NPCInteraction : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, range))
         {
-            if (hit.rigidbody.tag == "Aristotel")
+            if (hit.rigidbody.tag == "Aristotel" && questionTimer.isReady && !questionTimer.isInQuestion)
             {
+                questionTimer.isInQuestion = true;
                 questionSystem.ActivateQuestionChoice();
             }
-            else if (hit.rigidbody.tag == "Sokrat")
+            else if (hit.rigidbody.tag == "Sokrat" && questionTimer.isReady && !questionTimer.isInQuestion)
             {
+                questionTimer.isInQuestion = true;
                 questionSystem.ActivateQuestionEnter();
             }
             else if (hit.rigidbody.tag == "Trader")

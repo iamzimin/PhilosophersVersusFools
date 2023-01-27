@@ -7,6 +7,7 @@ using Unity.VisualScripting;
 public class QuestionSystem : MonoBehaviour
 {
     public Canvas canvas;
+    public QuestionTimer questionTimer;
 
     [Header("QuestionWithChoice")]
     public Image questionLayerChoice;
@@ -62,6 +63,9 @@ public class QuestionSystem : MonoBehaviour
         questionLayerEnter.gameObject.SetActive(false);
         winLayerEnter.gameObject.SetActive(false);
         loseLayerEnter.gameObject.SetActive(false);
+
+        questionTimer.isInQuestion = false;
+        questionTimer.ResetTime();
     }
 
     public void ActivateQuestionChoice()
@@ -109,6 +113,7 @@ public class QuestionSystem : MonoBehaviour
         else
             loseLayerChoice.gameObject.SetActive(true);
     }
+
     private void UpdateCompareChoice(int numBtn)
     {
         if (qChoice.rightAnswerId != -1)
@@ -118,6 +123,14 @@ public class QuestionSystem : MonoBehaviour
 
             for (int i = 0; i < compareRightChoice.Length; i++)
                 compareRightChoice[i].text = rightAnswer + answersTextChoice[qChoice.rightAnswerId].text;
+        }
+        else
+        {
+            for (int i = 0; i < compareYourChoice.Length; i++)
+                compareYourChoice[i].text = "";
+
+            for (int i = 0; i < compareRightChoice.Length; i++)
+                compareRightChoice[i].text = "";
         }
     }
 

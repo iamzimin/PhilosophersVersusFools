@@ -81,7 +81,7 @@ public class QuestionAnswerList : MonoBehaviour
         {
             qChoice.questionText = "Вопросы закончились :((";
             qChoice.answers = new List<string>() { "", "", "", "" };
-            qChoice.rightAnswerId = 5;
+            qChoice.rightAnswerId = -1;
             return qChoice;
         }
 
