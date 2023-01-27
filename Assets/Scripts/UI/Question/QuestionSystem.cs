@@ -3,6 +3,7 @@ using UnityEngine;
 using TMPro;
 using static QuestionAnswerList;
 using Unity.VisualScripting;
+using System;
 
 public class QuestionSystem : MonoBehaviour
 {
@@ -21,6 +22,11 @@ public class QuestionSystem : MonoBehaviour
     public TextMeshProUGUI[] compareYourChoice = new TextMeshProUGUI[2];
     public TextMeshProUGUI[] compareRightChoice = new TextMeshProUGUI[2];
 
+    public TextMeshProUGUI timeTextChoice;
+    [SerializeField] private bool isPickChoice = false;
+    [SerializeField] private float timerChoice = 5f;
+    [SerializeField] private float timeChoice = 5f;
+
 
     [Header("QuestionWithEnter")]
     public Image questionLayerEnter;
@@ -34,8 +40,16 @@ public class QuestionSystem : MonoBehaviour
     public TextMeshProUGUI[] compareYourEnter = new TextMeshProUGUI[2];
     public TextMeshProUGUI[] compareRightEnter = new TextMeshProUGUI[2];
 
+    public TextMeshProUGUI timeTextEnter;
+    [SerializeField] private bool isPickEnter = false;
+    [SerializeField] private float timerEnter = 6f;
+    [SerializeField] private float timeEnter = 6f;
+
+
+    [Header("BothQuestions")]
+    public Image noQuestions;
+
     [Header("Hero")]
-    //public Hero hero;
     public CoinsManager coinsManager;
 
 
@@ -46,16 +60,15 @@ public class QuestionSystem : MonoBehaviour
     private int rewardChoice = 10;
     private int rewardEnter = 50;
 
-    private string yourAnswer = "Ваш ответ: ";
-    private string rightAnswer = "Правильный ответ: ";
+    private string yourAnswerString = "Ваш ответ: ";
+    private string rightAnswerString = "Правильный ответ: ";
+    private string timeString = "Осталось: ";
 
 
 
 
     public void DeactivateQuestions()
     {
-        //canvas.gameObject.SetActive(false);
-
         questionLayerChoice.gameObject.SetActive(false);
         winLayerChoice.gameObject.SetActive(false);
         loseLayerChoice.gameObject.SetActive(false);
@@ -64,18 +77,29 @@ public class QuestionSystem : MonoBehaviour
         winLayerEnter.gameObject.SetActive(false);
         loseLayerEnter.gameObject.SetActive(false);
 
+        noQuestions.gameObject.SetActive(false);
+
         questionTimer.isInQuestion = false;
         questionTimer.ResetTime();
+
+        RestartTime();
+        ResetPick();
     }
 
     public void ActivateQuestionChoice()
     {
+        isPickChoice = true;
         coinsManager.UpdateCoins();
 
-        //canvas.gameObject.SetActive(true);
-        questionLayerChoice.gameObject.SetActive(true);
-
         qChoice = qaList.getRandomQuestionChoice();
+
+        if (qChoice.rightAnswerId == -1)
+        {
+            noQuestions.gameObject.SetActive(true);
+            return;
+        }
+
+        questionLayerChoice.gameObject.SetActive(true);        
 
         for (int i = 0; i < questionTextChoice.Length; i++)
             questionTextChoice[i].text = qChoice.questionText;
@@ -86,12 +110,18 @@ public class QuestionSystem : MonoBehaviour
     
     public void ActivateQuestionEnter()
     {
+        isPickEnter = true;
         coinsManager.UpdateCoins();
 
-        //canvas.gameObject.SetActive(true);
-        questionLayerEnter.gameObject.SetActive(true);
-
         qEnter = qaList.getRandomQuestionEnter();
+
+        if (qEnter.rightAnswer == "")
+        {
+            noQuestions.gameObject.SetActive(true);
+            return;
+        }
+
+        questionLayerEnter.gameObject.SetActive(true);
 
         for (int i = 0; i < questionTextEnter.Length; i++)
             questionTextEnter[i].text = qEnter.questionText;
@@ -116,22 +146,11 @@ public class QuestionSystem : MonoBehaviour
 
     private void UpdateCompareChoice(int numBtn)
     {
-        if (qChoice.rightAnswerId != -1)
-        {
-            for (int i = 0; i < compareYourChoice.Length; i++)
-                compareYourChoice[i].text = yourAnswer + answersTextChoice[numBtn].text;
+        for (int i = 0; i < compareYourChoice.Length; i++)
+            compareYourChoice[i].text = yourAnswerString + answersTextChoice[numBtn].text;
 
-            for (int i = 0; i < compareRightChoice.Length; i++)
-                compareRightChoice[i].text = rightAnswer + answersTextChoice[qChoice.rightAnswerId].text;
-        }
-        else
-        {
-            for (int i = 0; i < compareYourChoice.Length; i++)
-                compareYourChoice[i].text = "";
-
-            for (int i = 0; i < compareRightChoice.Length; i++)
-                compareRightChoice[i].text = "";
-        }
+        for (int i = 0; i < compareRightChoice.Length; i++)
+            compareRightChoice[i].text = rightAnswerString + answersTextChoice[qChoice.rightAnswerId].text;
     }
 
     public void OnClickButtonEnter()
@@ -143,17 +162,14 @@ public class QuestionSystem : MonoBehaviour
 
         UpdateCompareEnter();
 
-        if (!s1.Equals(""))
+        if (Equals(s1, s2))
         {
-            if (Equals(s1, s2))
-            {
-                coinsManager.AddCoinsToPlayer(rewardEnter);
-                coinsManager.UpdateCoins();
-                winLayerEnter.gameObject.SetActive(true);
-            }
-            else
-                loseLayerEnter.gameObject.SetActive(true);
+            coinsManager.AddCoinsToPlayer(rewardEnter);
+            coinsManager.UpdateCoins();
+            winLayerEnter.gameObject.SetActive(true);
         }
+        else
+            loseLayerEnter.gameObject.SetActive(true);
 
 
         answerTextEnter.text = "";
@@ -161,11 +177,46 @@ public class QuestionSystem : MonoBehaviour
     private void UpdateCompareEnter()
     {
         for (int i = 0; i < compareYourEnter.Length; i++)
-            compareYourEnter[i].text = yourAnswer + answerTextEnter.text.ToString();
+            compareYourEnter[i].text = yourAnswerString + answerTextEnter.text.ToString();
 
         for (int i = 0; i < compareRightEnter.Length; i++)
-            compareRightEnter[i].text = rightAnswer + qEnter.rightAnswer.ToString().ToLower();
+            compareRightEnter[i].text = rightAnswerString + qEnter.rightAnswer.ToString().ToLower();
     }
+
+    private void TimeEndChoice()
+    {
+        for (int i = 0; i < compareYourChoice.Length; i++)
+            compareYourChoice[i].text = yourAnswerString;
+
+        for (int i = 0; i < compareRightChoice.Length; i++)
+            compareRightChoice[i].text = rightAnswerString + answersTextChoice[qChoice.rightAnswerId].text;
+
+        loseLayerChoice.gameObject.SetActive(true);
+    }
+
+    private void TimeEndEnter()
+    {
+        for (int i = 0; i < compareYourEnter.Length; i++)
+            compareYourEnter[i].text = yourAnswerString;
+
+        for (int i = 0; i < compareRightEnter.Length; i++)
+            compareRightEnter[i].text = rightAnswerString + qEnter.rightAnswer.ToString().ToLower();
+
+        loseLayerEnter.gameObject.SetActive(true);
+    }
+
+    private void RestartTime()
+    {
+        timeChoice = timerChoice;
+        timeEnter = timerEnter;
+    }
+    private void ResetPick()
+    {
+        isPickChoice = false;
+        isPickEnter = false;
+    }
+
+
 
     private void Start()
     {
@@ -175,5 +226,35 @@ public class QuestionSystem : MonoBehaviour
 
         rewardTextChoice.text = rewardChoice.ToString();
         rewardTextEnter.text = rewardEnter.ToString();
+    }
+
+    private void Update()
+    {
+
+        if (isPickChoice)
+        {
+            timeChoice -= Time.deltaTime;
+            timeTextChoice.text = timeString + Math.Round(timeChoice, 0).ToString();
+            if (timeChoice < 0)
+            {
+                TimeEndChoice();
+
+                RestartTime();
+                ResetPick();
+            }
+        }
+        else if (isPickEnter) 
+        {
+            timeEnter -= Time.deltaTime;
+            timeTextEnter.text = timeString + Math.Round(timeEnter, 0).ToString();
+            if (timeEnter < 0)
+            {
+                TimeEndEnter();
+
+                RestartTime();
+                ResetPick();
+            }
+        }
+
     }
 }
