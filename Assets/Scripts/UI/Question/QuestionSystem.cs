@@ -48,6 +48,8 @@ public class QuestionSystem : MonoBehaviour
 
     [Header("BothQuestions")]
     public Image noQuestions;
+    public int rewardChoice = 10;
+    public int rewardEnter = 50;
 
     [Header("Hero")]
     public CoinsManager coinsManager;
@@ -57,8 +59,6 @@ public class QuestionSystem : MonoBehaviour
     private QuestionAnswerList.QuestionChoice qChoice;
     private QuestionAnswerList.QuestionEnter qEnter;
 
-    private int rewardChoice = 10;
-    private int rewardEnter = 50;
 
     private string yourAnswerString = "Ваш ответ: ";
     private string rightAnswerString = "Правильный ответ: ";
@@ -67,7 +67,7 @@ public class QuestionSystem : MonoBehaviour
 
 
 
-    public void DeactivateQuestions()
+    public void DeactivateQuestions(bool isEmpty)
     {
         questionLayerChoice.gameObject.SetActive(false);
         winLayerChoice.gameObject.SetActive(false);
@@ -80,7 +80,8 @@ public class QuestionSystem : MonoBehaviour
         noQuestions.gameObject.SetActive(false);
 
         questionTimer.isInQuestion = false;
-        questionTimer.ResetTime();
+        if (!isEmpty)
+            questionTimer.ResetTime();
 
         RestartTime();
         ResetPick();
@@ -222,7 +223,7 @@ public class QuestionSystem : MonoBehaviour
     {
         qaList = GetComponent<QuestionAnswerList>();
 
-        DeactivateQuestions();
+        DeactivateQuestions(false);
 
         rewardTextChoice.text = rewardChoice.ToString();
         rewardTextEnter.text = rewardEnter.ToString();

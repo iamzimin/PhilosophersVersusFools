@@ -21,7 +21,6 @@ public class ShopManager : MonoBehaviour
 
     public void DeactivateShop()
     {
-        //canvas.gameObject.SetActive(false);
         shop.gameObject.SetActive(false);
     }
     public void ActivateShop()

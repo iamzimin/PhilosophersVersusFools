@@ -7764,7 +7764,7 @@ MonoBehaviour:
       - m_Target: {fileID: 1300161457}
         m_TargetAssemblyTypeName: QuestionSystem, Assembly-CSharp
         m_MethodName: DeactivateQuestions
-        m_Mode: 1
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -8314,14 +8314,14 @@ MonoBehaviour:
       - m_Target: {fileID: 1300161457}
         m_TargetAssemblyTypeName: QuestionSystem, Assembly-CSharp
         m_MethodName: DeactivateQuestions
-        m_Mode: 1
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 0
+          m_BoolArgument: 1
         m_CallState: 2
 --- !u!114 &1226571144
 MonoBehaviour:
@@ -8876,6 +8876,8 @@ MonoBehaviour:
   timerEnter: 6
   timeEnter: 6
   noQuestions: {fileID: 1397290023}
+  rewardChoice: 10
+  rewardEnter: 50
   coinsManager: {fileID: 1300161460}
 --- !u!114 &1300161458
 MonoBehaviour:
@@ -11016,7 +11018,7 @@ MonoBehaviour:
       - m_Target: {fileID: 1300161457}
         m_TargetAssemblyTypeName: QuestionSystem, Assembly-CSharp
         m_MethodName: DeactivateQuestions
-        m_Mode: 1
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -12660,7 +12662,7 @@ MonoBehaviour:
       - m_Target: {fileID: 1300161457}
         m_TargetAssemblyTypeName: QuestionSystem, Assembly-CSharp
         m_MethodName: DeactivateQuestions
-        m_Mode: 1
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -13961,7 +13963,7 @@ MonoBehaviour:
       - m_Target: {fileID: 1300161457}
         m_TargetAssemblyTypeName: QuestionSystem, Assembly-CSharp
         m_MethodName: DeactivateQuestions
-        m_Mode: 1
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
