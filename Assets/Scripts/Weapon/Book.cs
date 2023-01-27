@@ -5,17 +5,11 @@ using UnityEngine;
 
 public class Book : MonoBehaviour
 {
-    private Rigidbody rb;
     private bool targetHit;
-    public int damage;
-    public Transform parent;
+    public int damage = 50;
+    public float deleteTime = 5f;
     //public int deleteBookTime = 2;
 
-    private void Start()
-    {
-        damage = 20;
-        rb = GetComponent<Rigidbody>();
-    }
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -33,7 +27,13 @@ public class Book : MonoBehaviour
             //Destroy(gameObject);
 
         }
-        transform.SetParent(parent.transform);
+        Invoke(nameof(DeleteBook), deleteTime);
+        //transform.SetParent(parent.transform);
+        //Destroy(gameObject);
     }
 
+    private void DeleteBook()
+    {
+        Destroy(gameObject);
+    }
 }
