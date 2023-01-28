@@ -13,6 +13,7 @@ public class EnemyNavMesh : MonoBehaviour
 
     private void Awake()
     {
+        hero = FindObjectOfType<Hero>().transform;
         navMeshAgent = GetComponent<NavMeshAgent>();
         me = GetComponent<Transform>();
     }

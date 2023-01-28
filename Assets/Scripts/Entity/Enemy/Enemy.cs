@@ -8,4 +8,10 @@ public class Enemy : Entity
     {
         healhPoint = base.healhPoint;
     }
+
+    public void UpgradeParametrs(int damage, int hp)
+    {
+        base.power += damage;
+        healhPoint += hp;
+    }
 }

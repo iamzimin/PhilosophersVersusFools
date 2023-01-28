@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Black : Enemy
 {
-    public Hero hero;
-    public Enemy enemy;
+    Hero hero;
+    Enemy enemy;
     public Black()
     {
         power = 10;
@@ -21,4 +21,11 @@ public class Black : Enemy
             enemy.GetDamage(hero.getPower());
         }
     }
+
+    public void Start()
+    {
+        hero = FindObjectOfType<Hero>();
+        enemy = GetComponent<Enemy>();
+    }
+
 }

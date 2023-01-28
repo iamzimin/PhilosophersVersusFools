@@ -2,18 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Yellow : Enemy
+public class Purple : Enemy
 {
     Hero hero;
     Enemy enemy;
-    public Yellow()
+    public Purple()
     {
-        power = 7;
-        healhPoint = 50;
+        power = 8;
+        healhPoint = 110;
     }
 
     private void OnCollisionEnter(Collision collision)
     {
+
         if (hero != null && collision.gameObject == hero.gameObject)
         {
             hero.GetDamage(power);
