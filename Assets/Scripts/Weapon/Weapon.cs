@@ -29,7 +29,7 @@ public class Weapon : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(throwKey) && isReadyToThrow && totalThrows > 0 && !isPause)
+        if (Input.GetKey(throwKey) && isReadyToThrow && totalThrows > 0 && !isPause)
             Throw();
     }
 

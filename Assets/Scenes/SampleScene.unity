@@ -1984,14 +1984,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 463875964}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1505544070}
-  m_Father: {fileID: 1300161456}
-  m_RootOrder: 1
+  m_Father: {fileID: 1133927993}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &479208737
 GameObject:
@@ -2692,6 +2692,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healhPoint: 500
+  maxHealhPoint: 100
   power: 40
   pauseGame: {fileID: 1300161461}
   speed: 20
@@ -7068,6 +7069,7 @@ Transform:
   m_Children:
   - {fileID: 979019998}
   - {fileID: 1300161456}
+  - {fileID: 463875965}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -8106,7 +8108,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1433844184}
-  - {fileID: 463875965}
   m_Father: {fileID: 1133927993}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -12810,10 +12811,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pauseGame: {fileID: 1300161461}
   enemies:
-  - {fileID: 999847268108702099, guid: ae52b883f778c994b85db462edfe9dcf, type: 3}
-  - {fileID: 2863708263234200588, guid: a0e1c19dce3c6c44c8d2014de8e6993d, type: 3}
-  - {fileID: 182293942794288617, guid: 3021a5e2de65ae3458062aadb7fbe2f9, type: 3}
-  - {fileID: 9055458989695200747, guid: 56e49e854765b1d4b8a677943b6eda06, type: 3}
+  - {fileID: 7740403921624706399, guid: ae52b883f778c994b85db462edfe9dcf, type: 3}
+  - {fileID: 1986143982089495865, guid: a0e1c19dce3c6c44c8d2014de8e6993d, type: 3}
+  - {fileID: 1580588193851684776, guid: 3021a5e2de65ae3458062aadb7fbe2f9, type: 3}
+  - {fileID: 6468987927843183088, guid: 56e49e854765b1d4b8a677943b6eda06, type: 3}
   spawnPlace:
   - {fileID: 372217907}
   - {fileID: 1400639812}

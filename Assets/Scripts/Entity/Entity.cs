@@ -6,7 +6,10 @@ public class Entity : MonoBehaviour
 {
     [Header("Entity parameters")]
     public int healhPoint = 100;
+    public int maxHealhPoint;
     public int power = 0;
+
+
 
     public virtual void GetDamage(int amountDamage)
     {
@@ -17,6 +20,11 @@ public class Entity : MonoBehaviour
     public virtual void Die()
     {
         Destroy(gameObject);
+    }
+
+    private void Start()
+    {
+        maxHealhPoint = healhPoint;
     }
 
     private void Update()

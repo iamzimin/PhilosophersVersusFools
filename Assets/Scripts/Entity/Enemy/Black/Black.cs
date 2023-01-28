@@ -10,6 +10,7 @@ public class Black : Enemy
     {
         power = 10;
         healhPoint = 150;
+        maxHealhPoint = healhPoint;
     }
 
     private void OnCollisionEnter(Collision collision)

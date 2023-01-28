@@ -10,6 +10,7 @@ public class Purple : Enemy
     {
         power = 8;
         healhPoint = 110;
+        maxHealhPoint = healhPoint;
     }
 
     private void OnCollisionEnter(Collision collision)

@@ -10,6 +10,7 @@ public class Violet : Enemy
     {
         power = 6;
         healhPoint = 150;
+        maxHealhPoint = healhPoint;
     }
 
     private void OnCollisionEnter(Collision collision)
