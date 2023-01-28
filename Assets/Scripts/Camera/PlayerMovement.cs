@@ -16,6 +16,8 @@ public class PlayerMovement : MonoBehaviour
     private float airMultiplier;
     public bool isRedyToJump = true;
 
+    public bool isPause = false;
+
 
 
     [Header("Ground Check")]
@@ -111,8 +113,15 @@ public class PlayerMovement : MonoBehaviour
 
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, whatIsGround);
 
-        MyInput();
+        if (!isPause)
+            MyInput();
+        else
+        {
+            x = 0f;
+            z = 0f;
+        }
         SpeedControl();
+
 
         if (isGrounded)
             rb.drag = groundDrag;

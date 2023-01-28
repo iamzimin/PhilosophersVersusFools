@@ -8,20 +8,33 @@ public class MouseLook : MonoBehaviour
 
     public float mouseSensetivityX = 500f;
     public float mouseSensetivityY = 500f;
-    float rotationX = 0f;
-    float rotationY = 0f;
+    private float rotationX = 0f;
+    private float rotationY = 0f;
+
+    private float mouseX;
+    private float mouseY;
+
+    public bool isPause = false;
 
     void Start()
     {
-        //Cursor.lockState = CursorLockMode.Locked;
+        Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
 
     void Update()
     {
-
-        float mouseX = Input.GetAxis("Mouse X") * mouseSensetivityX * Time.deltaTime;
-        float mouseY = Input.GetAxis("Mouse Y") * mouseSensetivityY * Time.deltaTime;
+        if (!isPause)
+        {
+            mouseX = Input.GetAxis("Mouse X") * mouseSensetivityX * Time.deltaTime;
+            mouseY = Input.GetAxis("Mouse Y") * mouseSensetivityY * Time.deltaTime;
+        }
+        else
+        {
+            mouseX = 0f;
+            mouseY = 0f;
+        }
+        
 
         rotationY += mouseX;
 

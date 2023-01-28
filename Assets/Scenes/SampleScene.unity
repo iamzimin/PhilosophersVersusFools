@@ -1526,6 +1526,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraPosition: {fileID: 1083391134}
+  isPause: 0
 --- !u!1 &266659663
 GameObject:
   m_ObjectHideFlags: 0
@@ -3009,6 +3010,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hero: {fileID: 541311231}
   isRedyToJump: 1
+  isPause: 0
   playerHight: 2
   groundDistance: 0.2
   whatIsGround:
@@ -3070,6 +3072,7 @@ MonoBehaviour:
   objectToThrow: {fileID: 7262538496136148066, guid: ebde5fae7024c4e44b86fa02bb012231, type: 3}
   totalThrows: 100
   throwCooldown: 0.5
+  isPause: 0
   throwKey: 323
   throwForce: 2
   throwUpwardForce: 0.4
@@ -6535,6 +6538,7 @@ MonoBehaviour:
   orientation: {fileID: 479208738}
   mouseSensetivityX: 500
   mouseSensetivityY: 500
+  isPause: 0
 --- !u!114 &964683455 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8715002793964514974, guid: 174441e2a13f5b54cb9ded4309eaf4df, type: 3}
@@ -8795,6 +8799,7 @@ GameObject:
   - component: {fileID: 1300161457}
   - component: {fileID: 1300161459}
   - component: {fileID: 1300161460}
+  - component: {fileID: 1300161461}
   m_Layer: 0
   m_Name: UI
   m_TagString: Untagged
@@ -8832,7 +8837,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvas: {fileID: 1433844187}
-  questionTimer: {fileID: 1999720505}
   questionLayerChoice: {fileID: 619759923}
   winLayerChoice: {fileID: 153442375}
   loseLayerChoice: {fileID: 1944958382}
@@ -8875,10 +8879,12 @@ MonoBehaviour:
   isPickEnter: 0
   timerEnter: 10
   timeEnter: 10
+  questionTimer: {fileID: 1999720505}
   noQuestions: {fileID: 1397290023}
   rewardChoice: 10
   rewardEnter: 50
   coinsManager: {fileID: 1300161460}
+  pauseGame: {fileID: 1300161461}
 --- !u!114 &1300161458
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8904,6 +8910,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvas: {fileID: 1433844187}
+  pauseGame: {fileID: 1300161461}
   shop: {fileID: 1970071474}
   cost:
   - {fileID: 1314934835}
@@ -8934,6 +8941,21 @@ MonoBehaviour:
   - {fileID: 630927765}
   - {fileID: 1550797825}
   - {fileID: 1795325212}
+--- !u!114 &1300161461
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1300161455}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b977dfbe079306a4f92781473dede79c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerMovement: {fileID: 541311229}
+  playerSens: {fileID: 963194229}
+  weapon: {fileID: 541311232}
 --- !u!1 &1311266646
 GameObject:
   m_ObjectHideFlags: 0

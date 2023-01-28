@@ -8,6 +8,7 @@ using UnityEngine.UI;
 public class ShopManager : MonoBehaviour
 {
     public Canvas canvas;
+    public PauseGame pauseGame;
 
     [Header("Shop Manager")]
     public Image shop;
@@ -21,10 +22,14 @@ public class ShopManager : MonoBehaviour
 
     public void DeactivateShop()
     {
+        pauseGame.ResumeGame();
+
         shop.gameObject.SetActive(false);
     }
     public void ActivateShop()
     {
+        pauseGame.StopGame();
+
         coinsManager.UpdateCoins();
 
         //canvas.gameObject.SetActive(true);

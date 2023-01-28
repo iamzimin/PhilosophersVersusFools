@@ -13,6 +13,7 @@ public class Weapon : MonoBehaviour
     [Header("Settings")]
     public int totalThrows = 10;
     public float throwCooldown = 0.5f;
+    public bool isPause = false;
 
     [Header("Throwing")]
     public KeyCode throwKey = KeyCode.Mouse0;
@@ -28,7 +29,7 @@ public class Weapon : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(throwKey) && isReadyToThrow && totalThrows > 0)
+        if (Input.GetKeyDown(throwKey) && isReadyToThrow && totalThrows > 0 && !isPause)
             Throw();
     }
 

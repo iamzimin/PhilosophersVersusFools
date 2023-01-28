@@ -8,7 +8,6 @@ using System;
 public class QuestionSystem : MonoBehaviour
 {
     public Canvas canvas;
-    public QuestionTimer questionTimer;
 
     [Header("QuestionWithChoice")]
     public Image questionLayerChoice;
@@ -47,13 +46,14 @@ public class QuestionSystem : MonoBehaviour
 
 
     [Header("BothQuestions")]
+    public QuestionTimer questionTimer;
     public Image noQuestions;
     public int rewardChoice = 10;
     public int rewardEnter = 50;
 
     [Header("Hero")]
-    Hero hero;
     public CoinsManager coinsManager;
+    public PauseGame pauseGame;
 
 
     private QuestionAnswerList qaList;
@@ -70,6 +70,8 @@ public class QuestionSystem : MonoBehaviour
 
     public void DeactivateQuestions(bool isEmpty)
     {
+        pauseGame.ResumeGame();
+
         questionLayerChoice.gameObject.SetActive(false);
         winLayerChoice.gameObject.SetActive(false);
         loseLayerChoice.gameObject.SetActive(false);
@@ -81,6 +83,7 @@ public class QuestionSystem : MonoBehaviour
         noQuestions.gameObject.SetActive(false);
 
         questionTimer.isInQuestion = false;
+
         if (!isEmpty)
             questionTimer.ResetTime();
 
@@ -90,7 +93,8 @@ public class QuestionSystem : MonoBehaviour
 
     public void ActivateQuestionChoice()
     {
-        isPickChoice = true;
+        pauseGame.StopGame();
+
         coinsManager.UpdateCoins();
 
         qChoice = qaList.getRandomQuestionChoice();
@@ -112,6 +116,8 @@ public class QuestionSystem : MonoBehaviour
     
     public void ActivateQuestionEnter()
     {
+        pauseGame.StopGame();
+
         isPickEnter = true;
         coinsManager.UpdateCoins();
 
