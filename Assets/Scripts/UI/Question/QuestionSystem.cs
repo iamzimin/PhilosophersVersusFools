@@ -52,6 +52,7 @@ public class QuestionSystem : MonoBehaviour
     public int rewardEnter = 50;
 
     [Header("Hero")]
+    Hero hero;
     public CoinsManager coinsManager;
 
 
