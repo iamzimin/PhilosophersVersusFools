@@ -31,8 +31,7 @@ public class ShopManager : MonoBehaviour
         pauseGame.StopGame();
 
         coinsManager.UpdateCoins();
-
-        //canvas.gameObject.SetActive(true);
+        
         shop.gameObject.SetActive(true);
 
         coinsManager.UpdateCoins();

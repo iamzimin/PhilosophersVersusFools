@@ -95,6 +95,7 @@ public class QuestionSystem : MonoBehaviour
     {
         pauseGame.StopGame();
 
+        isPickChoice = true;
         coinsManager.UpdateCoins();
 
         qChoice = qaList.getRandomQuestionChoice();

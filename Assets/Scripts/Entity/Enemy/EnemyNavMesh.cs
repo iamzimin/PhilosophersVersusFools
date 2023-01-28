@@ -5,15 +5,22 @@ using UnityEngine.AI;
 
 public class EnemyNavMesh : MonoBehaviour
 {
-    [SerializeField] private Transform enemyTarget;
+    [SerializeField] private Transform hero;
+    private Transform me;
     private NavMeshAgent navMeshAgent;
+
+    public bool isPause = false;
+
     private void Awake()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
+        me = GetComponent<Transform>();
     }
     private void Update()
     {
-        if (enemyTarget != null)
-            navMeshAgent.destination = enemyTarget.position;
+        if (hero != null && !isPause)
+            navMeshAgent.destination = hero.position;
+        else
+            navMeshAgent.destination = me.position;
     }
 }

@@ -8,12 +8,17 @@ public class PauseGame : MonoBehaviour
     public MouseLook playerSens;
     public Weapon weapon;
 
+    public GameObject objectToFind;
+
     public void StopGame()
     {
         Cursor.lockState = CursorLockMode.Confined;
         playerMovement.isPause = true;
         playerSens.isPause = true;
         weapon.isPause = true;
+        EnemyNavMesh[] allChildren = objectToFind.transform.GetComponentsInChildren<EnemyNavMesh>();
+        for (int i = 0; i < allChildren.Length; i++)
+            allChildren[i].isPause = true;
     }
 
     public void ResumeGame()
@@ -22,5 +27,8 @@ public class PauseGame : MonoBehaviour
         playerMovement.isPause = false;
         playerSens.isPause = false;
         weapon.isPause = false;
+        EnemyNavMesh[] allChildren = objectToFind.transform.GetComponentsInChildren<EnemyNavMesh>();
+        for (int i = 0; i < allChildren.Length; i++)
+            allChildren[i].isPause = false;
     }
 }
