@@ -6,7 +6,6 @@ using UnityEngine.UI;
 
 public class Enemy : Entity
 {
-    //public event Action<float> HealthChanged;
     public Image healthBar;
 
 

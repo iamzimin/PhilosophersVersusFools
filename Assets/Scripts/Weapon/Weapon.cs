@@ -35,7 +35,7 @@ public class Weapon : MonoBehaviour
 
     private void Throw()
     {
-        isReadyToThrow = false;
+        //isReadyToThrow = false;
 
         GameObject projectile = Instantiate(objectToThrow, attackPoint.position, cam.rotation);
         Rigidbody projectileRb = projectile.GetComponent<Rigidbody>();

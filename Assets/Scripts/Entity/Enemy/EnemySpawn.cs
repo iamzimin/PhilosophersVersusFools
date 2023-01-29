@@ -42,8 +42,9 @@ public class EnemySpawn : MonoBehaviour
                 timer -= 0.5f;
 
             Enemy[] allEnemies = transform.GetComponentsInChildren<Enemy>();
-            for (int i = allEnemies.Length - 1; i > (allEnemies.Length - 1) / 2; i--)
-                allEnemies[i].UpgradeParametrs(damage, hp);
+            //for (int i = allEnemies.Length - 1; i > (allEnemies.Length - 1) / 2; i--)
+            //    allEnemies[i].UpgradeParametrs(damage, hp);
+            allEnemies[allEnemies.Length - 1].UpgradeParametrs(damage, hp);
 
             damage += 5;
             hp += 15;

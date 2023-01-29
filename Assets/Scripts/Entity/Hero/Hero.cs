@@ -1,11 +1,15 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 using static UnityEditor.VersionControl.Asset;
 
 public class Hero : Entity
 {
     public PauseGame pauseGame;
+    public TextMeshProUGUI healthText;
 
     public float speed;
     public float strafeSpeed;
@@ -16,15 +20,25 @@ public class Hero : Entity
 
     public int coins;
 
+    public string healthString = "Çהמנמגüו: ";
+
 
     public Hero()
     {
         healhPoint = 500;
+        maxHealhPoint = healhPoint;
     }
 
     public override void GetDamage(int amountDamage)
     {
         healhPoint -= amountDamage;
+
+        float health = ((float)healhPoint / (float)maxHealhPoint) * 100;
+        if (health > 0)
+            healthText.text = healthString + (Math.Round(health, 0)).ToString() + "%";
+        else
+            healthText.text = healthString + "0%";
+
         if (healhPoint <= 0)
         {
             pauseGame.StopGame();
@@ -47,5 +61,8 @@ public class Hero : Entity
         airMultiplier = 0f;
 
         coins = 100;
+
+        float health = ((float)healhPoint / (float)maxHealhPoint) * 100;
+        healthText.text = healthString + (Math.Round(health, 0)).ToString() + "%";
     }
 }

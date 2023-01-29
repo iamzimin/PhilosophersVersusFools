@@ -49,17 +49,21 @@ public class ShopManager : MonoBehaviour
         else if(pick == "health")
         {
             UpdateCost(1);
-            hero.healhPoint += hero.healhPoint / 5;
+            hero.maxHealhPoint += (hero.maxHealhPoint / 100) * 5;
+            hero.healhPoint = hero.maxHealhPoint;
+
+            float health = ((float)hero.healhPoint / (float)hero.maxHealhPoint) * 100;
+            hero.healthText.text = hero.healthString + (Math.Round(health, 0)).ToString() + "%";
         }
         else if(pick == "speed")
         {
             UpdateCost(2);
-            hero.speed += hero.speed / 5;
+            hero.speed += (hero.speed / 100) * 5;
         }
         else if(pick == "jump")
         {
             UpdateCost(3);
-            hero.jumpForce += hero.jumpForce / 5;
+            hero.jumpForce += (hero.jumpForce / 100) * 5;
         }
 
         coinsManager.UpdateCoins();

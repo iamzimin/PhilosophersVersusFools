@@ -139,6 +139,9 @@ public class QuestionSystem : MonoBehaviour
 
     public void OnClickButtonChoice(int numBtn)
     {
+        RestartTime();
+        ResetPick();
+
         questionLayerChoice.gameObject.SetActive(false);
 
         UpdateCompareChoice(numBtn);
@@ -164,6 +167,9 @@ public class QuestionSystem : MonoBehaviour
 
     public void OnClickButtonEnter()
     {
+        RestartTime();
+        ResetPick();
+
         questionLayerEnter.gameObject.SetActive(false);
 
         string s1 = answerTextEnter.text.ToString().ToLower();
