@@ -13,12 +13,13 @@ public class ShopManager : MonoBehaviour
     [Header("Shop Manager")]
     public Image shop;
 
-    public TextMeshProUGUI[] cost = new TextMeshProUGUI[4];
+    public TextMeshProUGUI[] cost = new TextMeshProUGUI[5];
     public CoinsManager coinsManager;
 
     [Header("To Upgrade")]
     public Hero hero;
     public Book book;
+    public Weapon weapon;
 
     public void DeactivateShop()
     {
@@ -64,6 +65,11 @@ public class ShopManager : MonoBehaviour
         {
             UpdateCost(3);
             hero.jumpForce += (hero.jumpForce / 100) * 5;
+        }
+        else if(pick == "delay")
+        {
+            UpdateCost(4);
+            weapon.throwCooldown -= (weapon.throwCooldown / 100) * 50;
         }
 
         coinsManager.UpdateCoins();

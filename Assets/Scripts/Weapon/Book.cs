@@ -6,18 +6,17 @@ using UnityEngine;
 public class Book : MonoBehaviour
 {
     public GameObject blood;
-    //private bool targetHit;
-    public int damage = 50;
+    private bool targetHit;
     public float deleteTime = 5f;
-    //public int deleteBookTime = 2;
+    public int damage = 50;
 
 
     private void OnCollisionEnter(Collision collision)
     {
-        //if (targetHit)
-        //    return;
-        //else
-        //    targetHit = true;
+        if (targetHit)
+            return;
+        else
+            targetHit = true;
 
         if (collision.gameObject.GetComponent<Enemy>() != null)
         {
