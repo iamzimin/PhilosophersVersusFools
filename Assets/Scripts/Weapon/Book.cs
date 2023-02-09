@@ -13,10 +13,10 @@ public class Book : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (targetHit)
-            return;
-        else
-            targetHit = true;
+        //if (targetHit)
+        //    return;
+        //else
+        //    targetHit = true;
 
         if (collision.gameObject.GetComponent<Enemy>() != null)
         {
