@@ -20,8 +20,16 @@ public class EnemyNavMesh : MonoBehaviour
     private void Update()
     {
         if (hero != null && !isPause)
+        {
+            //navMeshAgent.isStopped = false;
+            navMeshAgent.enabled = true;
             navMeshAgent.destination = hero.position;
+        }
         else
-            navMeshAgent.destination = me.position;
+        {
+            //navMeshAgent.destination = me.position;
+            //navMeshAgent.isStopped = true;
+            navMeshAgent.enabled = false;
+        }
     }
 }
