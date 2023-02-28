@@ -8,12 +8,17 @@ public class PauseGame : MonoBehaviour
     public MouseLook playerSens;
     public Weapon weapon;
     public EnemySpawn enemySpawn;
+    GameObject[] enemies;
 
     public GameObject objectToFind;
 
     public void StopGame()
     {
         Cursor.lockState = CursorLockMode.Confined;
+        enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        for (int i = 0;i < enemies.Length; i++)
+            enemies[i].GetComponent<Animator>().enabled = false;
+
         playerMovement.isPause = true;
         playerSens.isPause = true;
         weapon.isPause = true;
@@ -26,6 +31,10 @@ public class PauseGame : MonoBehaviour
     public void ResumeGame()
     {
         Cursor.lockState = CursorLockMode.Locked;
+        enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        for (int i = 0; i < enemies.Length; i++)
+            enemies[i].GetComponent<Animator>().enabled = true;
+
         playerMovement.isPause = false;
         playerSens.isPause = false;
         weapon.isPause = false;
