@@ -2,13 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using Unity.VisualScripting;
 
 public class Weapon : MonoBehaviour
 {
     [Header("References")]
     public Transform cam;
     public Transform attackPoint;
-    public GameObject objectToThrow;
+    public GameObject[] objectsToThrow;
 
     [Header("Settings")]
     public int totalThrows = 10;
@@ -36,8 +37,8 @@ public class Weapon : MonoBehaviour
     private void Throw()
     {
         isReadyToThrow = false;
-
-        GameObject projectile = Instantiate(objectToThrow, attackPoint.position, cam.rotation);
+        GameObject projectile = Instantiate(objectsToThrow[new System.Random().Next(0, objectsToThrow.Length)],
+                                            attackPoint.position, cam.rotation);
         Rigidbody projectileRb = projectile.GetComponent<Rigidbody>();
 
         Vector3 forceDirection = cam.transform.forward;
