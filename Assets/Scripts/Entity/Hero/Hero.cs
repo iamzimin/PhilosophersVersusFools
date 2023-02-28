@@ -10,6 +10,7 @@ public class Hero : Entity
 {
     public PauseGame pauseGame;
     public TextMeshProUGUI healthText;
+    public CanvasGroup redScreen;
 
     public float speed;
     public float strafeSpeed;
@@ -21,6 +22,9 @@ public class Hero : Entity
     public int coins;
 
     public string healthString = "Çהמנמגüו: ";
+
+    private bool isGetDamage = false;
+    public float lerpTime = 0f;
 
 
     public Hero()
@@ -39,10 +43,16 @@ public class Hero : Entity
         else
             healthText.text = healthString + "0%";
 
+
         if (healhPoint <= 0)
         {
             pauseGame.StopGame();
             Die();
+        }
+        else
+        {
+            isGetDamage = true;
+            redScreen.alpha = 0.7f;
         }
     }
 
@@ -64,5 +74,19 @@ public class Hero : Entity
 
         float health = ((float)healhPoint / (float)maxHealhPoint) * 100;
         healthText.text = healthString + (Math.Round(health, 0)).ToString() + "%";
+    }
+
+    private void Update()
+    {
+        if (isGetDamage)
+        {
+            lerpTime += 3f * Time.deltaTime;
+            redScreen.alpha = Mathf.Lerp(0.7f, 0, lerpTime);
+            if (lerpTime > 1)
+            {
+                isGetDamage = false;
+                lerpTime = 0;
+            }
+        }
     }
 }
