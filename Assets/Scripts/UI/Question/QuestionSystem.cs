@@ -66,6 +66,8 @@ public class QuestionSystem : MonoBehaviour
     private string timeString = "Осталось: ";
 
 
+    [Header("Statistics")]
+    public StatisticsManager statisticsManager;
 
 
     public void DeactivateQuestions(bool isEmpty)
@@ -150,10 +152,14 @@ public class QuestionSystem : MonoBehaviour
         {
             coinsManager.AddCoinsToPlayer(rewardChoice);
             coinsManager.UpdateCoins();
+            statisticsManager.questionsWithChoise += rewardChoice;
             winLayerChoice.gameObject.SetActive(true);
         }
         else
+        {
+            statisticsManager.wrongAnswersWithChoise += 1;
             loseLayerChoice.gameObject.SetActive(true);
+        }
     }
 
     private void UpdateCompareChoice(int numBtn)
@@ -181,11 +187,14 @@ public class QuestionSystem : MonoBehaviour
         {
             coinsManager.AddCoinsToPlayer(rewardEnter);
             coinsManager.UpdateCoins();
+            statisticsManager.questionsWithEnter += rewardEnter;
             winLayerEnter.gameObject.SetActive(true);
         }
         else
+        {
+            statisticsManager.wrongAnswersWithEnter += 1;
             loseLayerEnter.gameObject.SetActive(true);
-
+        }
 
         answerTextEnter.text = "";
     }

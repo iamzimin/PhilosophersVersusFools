@@ -26,6 +26,10 @@ public class Hero : Entity
     private bool isGetDamage = false;
     public float lerpTime = 0f;
 
+    [Header("Statistics")]
+    public StatisticsManager statisticsManager;
+    private float prevPosX = 0f;
+    private float prevPosZ = 0f;
 
     public Hero()
     {
@@ -36,6 +40,7 @@ public class Hero : Entity
     public override void GetDamage(int amountDamage)
     {
         healhPoint -= amountDamage;
+        statisticsManager.healthPointsSpent += amountDamage;
 
         float health = ((float)healhPoint / (float)maxHealhPoint) * 100;
         if (health > 0)
@@ -74,6 +79,9 @@ public class Hero : Entity
 
         float health = ((float)healhPoint / (float)maxHealhPoint) * 100;
         healthText.text = healthString + (Math.Round(health, 0)).ToString() + "%";
+
+        prevPosX = this.transform.position.x;
+        prevPosZ = this.transform.position.z;
     }
 
     private void Update()
@@ -88,5 +96,10 @@ public class Hero : Entity
                 lerpTime = 0;
             }
         }
+        statisticsManager.surviveTime += Time.deltaTime;
+        statisticsManager.totalRunDistance += Math.Abs(this.transform.position.x - prevPosX);
+        statisticsManager.totalRunDistance += Math.Abs(this.transform.position.z - prevPosZ);
+        prevPosX = this.transform.position.x;
+        prevPosZ = this.transform.position.z;
     }
 }

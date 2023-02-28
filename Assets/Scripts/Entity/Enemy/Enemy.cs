@@ -8,6 +8,9 @@ public class Enemy : Entity
 {
     public Image healthBar;
 
+    [Header("Statistics")]
+    public GameObject statisticsManagerGameObject;
+    public StatisticsManager statisticsManager;
 
     public override void GetDamage(int amountDamage)
     {
@@ -15,6 +18,15 @@ public class Enemy : Entity
         ChangeHealth();
         if (healhPoint <= 0)
             Die();
+    }
+
+    public override void Die()
+    {
+        statisticsManagerGameObject = GameObject.FindGameObjectWithTag("Manager_GameObject");
+        statisticsManager = statisticsManagerGameObject.GetComponent<StatisticsManager>();
+        if (statisticsManager != null)
+            statisticsManager.killedFools += 1;
+        base.Die();
     }
 
     public void ChangeHealth()

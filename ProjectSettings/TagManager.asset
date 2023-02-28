@@ -8,6 +8,7 @@ TagManager:
   - Sokrat
   - Aristotel
   - Trader
+  - Manager_GameObject
   layers:
   - Default
   - TransparentFX

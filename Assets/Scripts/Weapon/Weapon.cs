@@ -23,6 +23,9 @@ public class Weapon : MonoBehaviour
 
     bool isReadyToThrow;
 
+    [Header("Statistics")]
+    public StatisticsManager statisticsManager;
+
     private void Start()
     {
         isReadyToThrow = true;
@@ -51,6 +54,7 @@ public class Weapon : MonoBehaviour
 
         projectileRb.AddForce(forceToAdd, ForceMode.Impulse);
         //totalThrows--;
+        statisticsManager.booksThrown++;
 
         Invoke(nameof(ResetThrow), throwCooldown);
     }
