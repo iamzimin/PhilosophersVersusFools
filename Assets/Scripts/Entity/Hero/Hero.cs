@@ -66,6 +66,11 @@ public class Hero : Entity
         }
     }
 
+    public override void Die()
+    {
+        //base.Die();
+    }
+
     public int getPower()
     {
         return power;

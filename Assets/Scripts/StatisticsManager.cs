@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -6,7 +7,10 @@ using UnityEngine;
 public class StatisticsManager : MonoBehaviour
 {
     public GameObject gameOverGameObject;
+    public CanvasGroup gameOverCanvasGroup;
     public TextMeshProUGUI[] text;
+    public float lerpTime = 0f;
+    public bool isShowed = false;
 
 
     public int questionsWithChoise = 0;//
@@ -30,14 +34,32 @@ public class StatisticsManager : MonoBehaviour
         text[2].text = killedFools.ToString();
         text[3].text = (wrongAnswersWithChoise + wrongAnswersWithEnter).ToString();
         text[4].text = healthPointsSpent.ToString();
-        text[5].text = surviveTime.ToString();
-        text[6].text = totalRunDistance.ToString();
+        text[5].text = Math.Round(surviveTime, 0).ToString();
+        text[6].text = Math.Round(totalRunDistance, 0).ToString();
         text[7].text = booksThrown.ToString();
     }
 
     public void DisableDeadScreen()
     {
         gameOverGameObject.SetActive(false);
+    }
+
+    private void Start()
+    {
+        gameOverCanvasGroup = gameOverGameObject.GetComponent<CanvasGroup>();
+        gameOverCanvasGroup.alpha = 0f;
+    }
+
+    private void Update()
+    {
+        if (gameOverGameObject.activeSelf && !isShowed)
+        {
+            lerpTime += 0.5f * Time.deltaTime;
+            gameOverCanvasGroup.alpha = Mathf.Lerp(0f, 1f, lerpTime);
+            if (lerpTime > 1)
+                isShowed = true;
+        }
+        
     }
 
 }

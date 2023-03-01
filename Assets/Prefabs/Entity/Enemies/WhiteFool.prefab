@@ -358,8 +358,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healhPoint: 50
   maxHealhPoint: 50
-  power: 7
+  power: 859
   healthBar: {fileID: 2337690992193977392}
+  statisticsManagerGameObject: {fileID: 0}
+  statisticsManager: {fileID: 0}
 --- !u!95 &6975090732828228111
 Animator:
   serializedVersion: 5
