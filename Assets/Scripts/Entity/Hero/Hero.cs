@@ -10,7 +10,9 @@ public class Hero : Entity
 {
     public PauseGame pauseGame;
     public TextMeshProUGUI healthText;
-    public CanvasGroup redScreen;
+    public GameObject redScreen;
+    private CanvasGroup redScreenCanvasGroup;
+    public GameObject deadScreen;
 
     public float speed;
     public float strafeSpeed;
@@ -51,13 +53,16 @@ public class Hero : Entity
 
         if (healhPoint <= 0)
         {
+            statisticsManager.SetStats();
+            deadScreen.SetActive(true);
             pauseGame.StopGame();
             Die();
         }
         else
         {
             isGetDamage = true;
-            redScreen.alpha = 0.7f;
+            redScreen.SetActive(isGetDamage);
+            redScreenCanvasGroup.alpha = 0.7f;
         }
     }
 
@@ -80,6 +85,8 @@ public class Hero : Entity
         float health = ((float)healhPoint / (float)maxHealhPoint) * 100;
         healthText.text = healthString + (Math.Round(health, 0)).ToString() + "%";
 
+        statisticsManager.DisableDeadScreen();
+        redScreenCanvasGroup = redScreen.GetComponent<CanvasGroup>();
         prevPosX = this.transform.position.x;
         prevPosZ = this.transform.position.z;
     }
@@ -89,16 +96,16 @@ public class Hero : Entity
         if (isGetDamage)
         {
             lerpTime += 3f * Time.deltaTime;
-            redScreen.alpha = Mathf.Lerp(0.7f, 0, lerpTime);
+            redScreenCanvasGroup.alpha = Mathf.Lerp(0.7f, 0, lerpTime);
             if (lerpTime > 1)
             {
                 isGetDamage = false;
+                redScreen.SetActive(isGetDamage);
                 lerpTime = 0;
             }
         }
         statisticsManager.surviveTime += Time.deltaTime;
-        statisticsManager.totalRunDistance += Math.Abs(this.transform.position.x - prevPosX);
-        statisticsManager.totalRunDistance += Math.Abs(this.transform.position.z - prevPosZ);
+        statisticsManager.totalRunDistance += Math.Sqrt(Math.Pow(this.transform.position.x - prevPosX, 2) + Math.Pow(this.transform.position.z - prevPosZ, 2));
         prevPosX = this.transform.position.x;
         prevPosZ = this.transform.position.z;
     }

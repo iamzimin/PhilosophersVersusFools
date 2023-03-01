@@ -22,7 +22,7 @@ public class Enemy : Entity
 
     public override void Die()
     {
-        statisticsManagerGameObject = GameObject.FindGameObjectWithTag("Manager_GameObject");
+        statisticsManagerGameObject = GameObject.FindGameObjectWithTag("Player");
         statisticsManager = statisticsManagerGameObject.GetComponent<StatisticsManager>();
         if (statisticsManager != null)
             statisticsManager.killedFools += 1;
