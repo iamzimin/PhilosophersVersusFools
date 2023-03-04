@@ -58,7 +58,7 @@ public class Hero : Entity
             pauseGame.StopGame();
             Die();
         }
-        else
+        else if (amountDamage > 0)
         {
             isGetDamage = true;
             redScreen.SetActive(isGetDamage);

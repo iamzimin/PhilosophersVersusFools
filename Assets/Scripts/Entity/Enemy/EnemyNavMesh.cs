@@ -6,8 +6,8 @@ using UnityEngine.AI;
 public class EnemyNavMesh : MonoBehaviour
 {
     [SerializeField] private Transform hero;
-    private Transform me;
-    private NavMeshAgent navMeshAgent;
+    public Transform me;
+    public NavMeshAgent navMeshAgent;
 
     public bool isPause = false;
 
@@ -21,14 +21,11 @@ public class EnemyNavMesh : MonoBehaviour
     {
         if (hero != null && !isPause)
         {
-            //navMeshAgent.isStopped = false;
             navMeshAgent.enabled = true;
             navMeshAgent.destination = hero.position;
         }
         else
         {
-            //navMeshAgent.destination = me.position;
-            //navMeshAgent.isStopped = true;
             navMeshAgent.enabled = false;
         }
     }
