@@ -6,6 +6,8 @@ using Unity.VisualScripting;
 
 public class Weapon : MonoBehaviour
 {
+    public GameObject managerObjects;
+
     [Header("References")]
     public Transform cam;
     public Transform attackPoint;
@@ -26,9 +28,13 @@ public class Weapon : MonoBehaviour
     [Header("Statistics")]
     public StatisticsManager statisticsManager;
 
+    [Header("Sounds")]
+    private PlaySound playSound;
+
     private void Start()
     {
         isReadyToThrow = true;
+        playSound = managerObjects.GetComponent<PlaySound>();
     }
 
     private void Update()
@@ -39,7 +45,9 @@ public class Weapon : MonoBehaviour
 
     private void Throw()
     {
+
         isReadyToThrow = false;
+        playSound.SoundPlay("book_throw");
         GameObject projectile = Instantiate(objectsToThrow[new System.Random().Next(0, objectsToThrow.Length)],
                                             attackPoint.position, cam.rotation);
         Rigidbody projectileRb = projectile.GetComponent<Rigidbody>();

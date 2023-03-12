@@ -20,8 +20,14 @@ public class Enemy : Entity
     public GameObject statisticsManagerGameObject;
     public StatisticsManager statisticsManager;
 
+    [Header("Sounds")]
+    private SoundEffects playSound;
+
     public override void GetDamage(int amountDamage)
     {
+        playSound = GameObject.FindGameObjectWithTag("SOUND_EFFECTS_TAG").GetComponent<SoundEffects>();
+        playSound.PlaySound("book_hit");
+
         healhPoint -= amountDamage;
         ChangeHealth();
         if (healhPoint <= 0)

@@ -9,6 +9,7 @@ public class ShopManager : MonoBehaviour
 {
     public Canvas canvas;
     public PauseGame pauseGame;
+    public GameObject managerObjects;
 
     [Header("Shop Manager")]
     public Image shop;
@@ -20,6 +21,9 @@ public class ShopManager : MonoBehaviour
     public Hero hero;
     public Book book;
     public Weapon weapon;
+
+    [Header("Sounds")]
+    private PlaySound playSound;
 
     public void DeactivateShop()
     {
@@ -40,6 +44,7 @@ public class ShopManager : MonoBehaviour
 
     public void OnClickButtonBuy(string pick)
     {
+        playSound.SoundPlay("coins");
         pick = pick.ToLower();
 
         if (pick == "damage")
@@ -91,5 +96,6 @@ public class ShopManager : MonoBehaviour
     void Start()
     {
         DeactivateShop();
+        playSound = managerObjects.GetComponent<PlaySound>();
     }
 }

@@ -8,6 +8,8 @@ TagManager:
   - Sokrat
   - Aristotel
   - Trader
+  - SOUND_EFFECTS_TAG
+  - BACKGROUND_MUSIC_TAG
   layers:
   - Default
   - TransparentFX

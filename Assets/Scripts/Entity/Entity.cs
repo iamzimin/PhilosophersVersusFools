@@ -9,8 +9,6 @@ public class Entity : MonoBehaviour
     public int maxHealhPoint;
     public int power = 0;
 
-
-
     public virtual void GetDamage(int amountDamage)
     {
         healhPoint -= amountDamage;
