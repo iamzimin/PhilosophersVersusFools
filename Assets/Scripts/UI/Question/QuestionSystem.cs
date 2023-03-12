@@ -190,6 +190,7 @@ public class QuestionSystem : MonoBehaviour
 
         if (Equals(s1, s2))
         {
+            playSound.SoundPlay("coins");
             coinsManager.AddCoinsToPlayer(rewardEnter);
             coinsManager.UpdateCoins();
             statisticsManager.questionsWithEnter += rewardEnter;

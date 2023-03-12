@@ -271,7 +271,7 @@ GameObject:
   - component: {fileID: 55819426}
   m_Layer: 0
   m_Name: CameraUI
-  m_TagString: Untagged
+  m_TagString: CameraUI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -807,7 +807,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8548239456392447311, guid: 7e83b83cdc17acb43956625bc9fc2207, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8548239456392447311, guid: 7e83b83cdc17acb43956625bc9fc2207, type: 3}
       propertyPath: m_AnchorMax.x
@@ -1569,7 +1569,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2069106612
 RectTransform:
   m_ObjectHideFlags: 0

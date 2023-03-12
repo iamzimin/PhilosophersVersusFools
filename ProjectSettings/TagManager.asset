@@ -10,6 +10,8 @@ TagManager:
   - Trader
   - SOUND_EFFECTS_TAG
   - BACKGROUND_MUSIC_TAG
+  - BACKGROUND_VIDEO
+  - CameraUI
   layers:
   - Default
   - TransparentFX
