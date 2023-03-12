@@ -365,13 +365,18 @@ RectTransform:
   - {fileID: 1191868174}
   - {fileID: 419437877}
   m_Father: {fileID: 2123984502}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 187.7, y: 1}
   m_SizeDelta: {x: 246.87, y: 76.12}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &419437876 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6089229800876532258, guid: 9350794a9c00d8b4eb8165418c0040b9, type: 3}
+  m_PrefabInstance: {fileID: 6089229801295970070}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &419437877 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6089229800876532259, guid: 9350794a9c00d8b4eb8165418c0040b9, type: 3}
@@ -550,6 +555,11 @@ PrefabInstance:
 --- !u!224 &554538778 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 544620493403540618, guid: 4e6b2d29a7d604244b509dfa9be06d24, type: 3}
+  m_PrefabInstance: {fileID: 554538777}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &554538779 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 544620494208324079, guid: 4e6b2d29a7d604244b509dfa9be06d24, type: 3}
   m_PrefabInstance: {fileID: 554538777}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &782668480
@@ -794,6 +804,59 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 544620493403540618, guid: 4e6b2d29a7d604244b509dfa9be06d24, type: 3}
   m_PrefabInstance: {fileID: 1148386671}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1148386673 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 544620494208324079, guid: 4e6b2d29a7d604244b509dfa9be06d24, type: 3}
+  m_PrefabInstance: {fileID: 1148386671}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1152283219
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1152283220}
+  - component: {fileID: 1152283221}
+  m_Layer: 0
+  m_Name: ObjectsManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1152283220
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1152283219}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -6.00914, y: 10.665583, z: 26.171883}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1152283221
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1152283219}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ad01cd7b7f4af7408807380b8dc00a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  generalVolume: {fileID: 544620493985192437}
+  soundVolume: {fileID: 1148386673}
+  musicVolume: {fileID: 554538779}
+  nicknameTextField: {fileID: 419437876}
 --- !u!1 &1191868173
 GameObject:
   m_ObjectHideFlags: 0
@@ -929,37 +992,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1191868173}
   m_CullTransparentMesh: 1
---- !u!1 &1408512424
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1408512425}
-  m_Layer: 0
-  m_Name: GameObject
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1408512425
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1408512424}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.123018, y: 10.557274, z: 22.558641}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1414702933
 GameObject:
   m_ObjectHideFlags: 0
@@ -1436,8 +1468,8 @@ RectTransform:
   - {fileID: 2069106612}
   - {fileID: 14801520}
   - {fileID: 782668481}
-  - {fileID: 8548239456220662750}
   - {fileID: 66194017}
+  - {fileID: 8548239456220662750}
   m_Father: {fileID: 507385643}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1632,6 +1664,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4e6b2d29a7d604244b509dfa9be06d24, type: 3}
+--- !u!1 &544620493985192437 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 544620494208324079, guid: 4e6b2d29a7d604244b509dfa9be06d24, type: 3}
+  m_PrefabInstance: {fileID: 544620493985192436}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6089229801295970070
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1649,7 +1686,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6089229800876532258, guid: 9350794a9c00d8b4eb8165418c0040b9, type: 3}
       propertyPath: m_Name
-      value: TextArea
+      value: NicknameTextArea
       objectReference: {fileID: 0}
     - target: {fileID: 6089229800876532259, guid: 9350794a9c00d8b4eb8165418c0040b9, type: 3}
       propertyPath: m_Pivot.x
@@ -1843,6 +1880,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 1152283221}
+        m_TargetAssemblyTypeName: ConfigManager, Assembly-CSharp
+        m_MethodName: SaveSettings
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 1486808747}
         m_TargetAssemblyTypeName: SceneLoad, Assembly-CSharp
         m_MethodName: SceneLoader
@@ -1869,7 +1918,7 @@ RectTransform:
   m_Children:
   - {fileID: 8548239457206499958}
   m_Father: {fileID: 2123984502}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
