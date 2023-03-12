@@ -15,13 +15,13 @@ public class SoundEffects : MonoBehaviour
 
     [Header("Genaral")]
     public float generalVolume;
+    public float soundVolume;
 
     [Header("Sound")]
     public AudioSource soundSource;
     public SoundWithTag[] sound;
-    private Dictionary<string, AudioClip> soundsDict;
+    public Dictionary<string, AudioClip> soundsDict;
 
-    public float soundVolume;
 
     private void Start()
     {
@@ -35,12 +35,7 @@ public class SoundEffects : MonoBehaviour
     public void PlaySound(string tag)
     {
         if (soundSource !=null) 
-        {
-            var data = SaveManager.Load<SaveData>(ConfigManager.saveKey);
-
-            soundSource.clip = soundsDict[tag];
-            soundSource.PlayOneShot(soundSource.clip, data.soundVolume);
-        }
+            soundSource.PlayOneShot(soundsDict[tag], soundVolume);
     }
 
     private void UpdateBackgroundVolume()
@@ -50,8 +45,8 @@ public class SoundEffects : MonoBehaviour
             var data = SaveManager.Load<SaveData>(ConfigManager.saveKey);
 
             this.generalVolume = data.generalVolume;
-
             this.soundVolume = data.soundVolume;
+
             this.soundSource.volume = this.soundVolume * generalVolume;
         }
         else

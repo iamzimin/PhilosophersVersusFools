@@ -823,6 +823,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   generalVolume: 0
+  soundSource: {fileID: 0}
   sound:
   - tag: button_click
     sound: {fileID: 8300000, guid: 0dc4b8d7bf74b184c987ce8f2e1da0b9, type: 3}

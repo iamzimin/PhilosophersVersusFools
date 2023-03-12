@@ -21,14 +21,30 @@ public class Enemy : Entity
     public StatisticsManager statisticsManager;
 
     [Header("Sounds")]
+    public AudioSource soundSource;
     private SoundEffects playSound;
 
     public override void GetDamage(int amountDamage)
     {
+        /*
         playSound = GameObject.FindGameObjectWithTag("SOUND_EFFECTS_TAG").GetComponent<SoundEffects>();
-        playSound.PlaySound("book_hit");
 
-        healhPoint -= amountDamage;
+        var data = SaveManager.Load<SaveData>(ConfigManager.saveKey);
+
+        soundSource.clip = playSound.soundsDict["book_hit"];
+        soundSource.PlayOneShot(soundSource.clip, data.soundVolume);*/
+        playSound = GameObject.FindGameObjectWithTag("SOUND_EFFECTS_TAG").GetComponent<SoundEffects>();
+
+        if (healhPoint > 0)
+        {
+            healhPoint -= amountDamage;
+
+            if (healhPoint > 0)
+                playSound.PlaySound("book_hit");
+            else
+                playSound.PlaySound("hit_with_scream");
+        }
+
         ChangeHealth();
         if (healhPoint <= 0)
             isDead = true;
@@ -54,20 +70,14 @@ public class Enemy : Entity
         healhPoint += hp;
         maxHealhPoint = healhPoint;
     }
-/*
-    private void Awake()
-    {
-        animator = GetComponent<Animator>();
-        rigidbody = GetComponent<Rigidbody>();
-        agent = GetComponent<EnemyNavMesh>();
-    }*/
 
     private void Update()
     {
         if (isDead && timer > time)
         {
             if (time == 0f)
-            {/*
+            {
+                /*
                 //Collider collider = transform.GetChild(1).GetComponent<Collider>();
                 //collider.enabled = false;
                 agent.navMeshAgent.isStopped = true;

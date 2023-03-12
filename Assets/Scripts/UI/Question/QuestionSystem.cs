@@ -8,6 +8,7 @@ using System;
 public class QuestionSystem : MonoBehaviour
 {
     public Canvas canvas;
+    public GameObject managerObjects;
 
     [Header("QuestionWithChoice")]
     public Image questionLayerChoice;
@@ -69,6 +70,9 @@ public class QuestionSystem : MonoBehaviour
     [Header("Statistics")]
     public StatisticsManager statisticsManager;
 
+
+    [Header("Sounds")]
+    private PlaySound playSound;
 
     public void DeactivateQuestions(bool isEmpty)
     {
@@ -150,6 +154,7 @@ public class QuestionSystem : MonoBehaviour
 
         if (qChoice.rightAnswerId == numBtn)
         {
+            playSound.SoundPlay("coins");
             coinsManager.AddCoinsToPlayer(rewardChoice);
             coinsManager.UpdateCoins();
             statisticsManager.questionsWithChoise += rewardChoice;
@@ -245,6 +250,7 @@ public class QuestionSystem : MonoBehaviour
     private void Start()
     {
         qaList = GetComponent<QuestionAnswerList>();
+        playSound = managerObjects.GetComponent<PlaySound>();
 
         DeactivateQuestions(false);
 
