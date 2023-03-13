@@ -14,8 +14,8 @@ public class LeaderboardManager : MonoBehaviour
 
     void Start()
     {
-        //databaseManager.StartCoroutine(databaseManager.GetDataFromFirebase());
-        databaseManager.GetDataFromFirebase();
+        databaseManager.StartCoroutine(databaseManager.GetDataFromFirebase());
+        //databaseManager.GetDataFromFirebase();
         //this.leaderboard = databaseManager.leaderboard;
     }
 
@@ -23,12 +23,26 @@ public class LeaderboardManager : MonoBehaviour
     {
         for (int i = 0; i < leaderboard.Count; i++)
         {
+            /*string nickname = "";
+            int score = 0;
+            int kills = 0;
+            int time = 0;
+            int distance = 0;
+            int books = 0;*/
+
+
             string nickname = (string)leaderboard[i]["nickname"];
             int score = Convert.ToInt32(leaderboard[i]["score"]);
             int kills = Convert.ToInt32(leaderboard[i]["kills"]);
             int time = Convert.ToInt32(leaderboard[i]["time"]);
             int distance = Convert.ToInt32(leaderboard[i]["distance"]);
             int books = Convert.ToInt32(leaderboard[i]["books"]);
+
+            Debug.Log(nickname + score.ToString() + kills.ToString() + time.ToString() + distance.ToString() + books.ToString());
+
+            Debug.Log(ScrollView.transform.position.ToString());
+            Debug.Log(leaderboard_row.ToString());
+            Debug.Log(transform.rotation.ToString());
 
             GameObject row = Instantiate(leaderboard_row, ScrollView.transform.position, transform.rotation);
             row.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = nickname;

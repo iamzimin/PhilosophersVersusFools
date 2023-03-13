@@ -39,15 +39,15 @@ public class FirebaseDatabaseManager : MonoBehaviour
     {
         databaseReference = FirebaseDatabase.DefaultInstance.RootReference;
         databaseReference.OrderByChild("score");
-        /*
-                AddPlayer("hello", 10, 15, 166, 544, 35);
-                AddPlayer("world", 10, 145, 16, 544, 5);
-                AddPlayer("its", 10, 165, 66, 544, 58);
-                AddPlayer("game", 10, 415, 166, 44, 33);
-                AddPlayer("for", 10, 15, 16, 54, 35);
-                AddPlayer("univercity", 1, 15, 166, 544, 385);
-                AddPlayer("hehehe", 10, 15, 146, 584, 3);
-                AddPlayer("hahaha", 10, 25, 16, 44, 35);*/
+/*
+        AddPlayer("hello", 10, 15, 166, 544, 35);
+        AddPlayer("world", 10, 145, 16, 544, 5);
+        AddPlayer("its", 120, 165, 66, 544, 58);
+        AddPlayer("game", 10, 415, 166, 44, 33);
+        AddPlayer("for", 105, 15, 16, 54, 35);
+        AddPlayer("univercity", 91, 15, 166, 544, 385);
+        AddPlayer("hehehe", 110, 15, 146, 584, 3);
+        AddPlayer("hahaha", 140, 25, 16, 44, 35);*/
     }
 
     public void AddPlayer(string nickname, int score, int kills, int time, int distance, int books)
@@ -58,38 +58,41 @@ public class FirebaseDatabaseManager : MonoBehaviour
         databaseReference.Child("leaderboard").Push().SetRawJsonValueAsync(json);
     }
 
-    //public IEnumerator GetDataFromFirebase()
-    public void GetDataFromFirebase()
+    public IEnumerator GetDataFromFirebase()
+    //public void GetDataFromFirebase()
     {
-        /*var data = databaseReference.Child("leaderboard").GetValueAsync();
+        var data = databaseReference.Child("leaderboard").GetValueAsync();
 
-        yield return new WaitUntil(predicate: () => data.IsCompleted);*/
+        yield return new WaitUntil(predicate: () => data.IsCompleted);
 
+        /*
         databaseReference.OrderByChild("score").GetValueAsync().ContinueWith(task => {
-            if (task.IsFaulted)
+             if (task.IsFaulted)
+             {
+                 // Handle the error...
+             }
+             else if (task.IsCompleted)
+             {
+                 leaderboard = new List<Dictionary<string, object>>();
+        });*/
+        
+        leaderboard = new List<Dictionary<string, object>>();
+
+        if (data != null)
+        {
+            DataSnapshot snapshot = data.Result;
+            foreach (DataSnapshot player in snapshot.Children)
             {
-                // Handle the error...
+                Dictionary<string, object> player_data = (Dictionary<string, object>)player.GetValue(true);
+                leaderboard.Add(player_data);
             }
-            else if (task.IsCompleted)
-            {
-                leaderboard = new List<Dictionary<string, object>>();
-                /*if (data != null)
-                {*/
-                    DataSnapshot snapshot = task.Result.Child("leaderboard");
-                    foreach (DataSnapshot player in snapshot.Children)
-                    {
-                        Dictionary<string, object> player_data = (Dictionary<string, object>)player.GetValue(true);
-                        leaderboard.Add(player_data);
-                    }
-                Debug.Log("123");
-                //}
-                if (leaderboardManager != null)
-                {
-                    leaderboardManager.leaderboard = leaderboard;
-                    leaderboardManager.FillScrolView();
-                }
-            }
-        });
+            Debug.Log("123");
+        }
+        if (leaderboardManager != null)
+        {
+            leaderboardManager.leaderboard = leaderboard;
+            leaderboardManager.FillScrolView();
+        }
 
         
     }
