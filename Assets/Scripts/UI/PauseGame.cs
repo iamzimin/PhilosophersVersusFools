@@ -15,6 +15,7 @@ public class PauseGame : MonoBehaviour
     public void StopGame()
     {
         Cursor.lockState = CursorLockMode.Confined;
+        Cursor.visible = true;
         enemies = GameObject.FindGameObjectsWithTag("Enemy");
         for (int i = 0;i < enemies.Length; i++)
             enemies[i].GetComponent<Animator>().enabled = false;
@@ -31,6 +32,7 @@ public class PauseGame : MonoBehaviour
     public void ResumeGame()
     {
         Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
         enemies = GameObject.FindGameObjectsWithTag("Enemy");
         for (int i = 0; i < enemies.Length; i++)
             enemies[i].GetComponent<Animator>().enabled = true;

@@ -261,6 +261,20 @@ public class QuestionSystem : MonoBehaviour
 
     private void Update()
     {
+        /*if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (Cursor.lockState == CursorLockMode.Locked)
+            {
+                Cursor.lockState = CursorLockMode.Confined;
+                Cursor.visible = true;
+            }
+            else
+            {
+                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
+            }
+            //Cursor.lockState = Cursor.lockState == CursorLockMode.Locked ? CursorLockMode.Confined : CursorLockMode.Confined;
+        }*/
 
         if (isPickChoice)
         {
