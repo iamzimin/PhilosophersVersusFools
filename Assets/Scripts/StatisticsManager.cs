@@ -36,13 +36,15 @@ public class StatisticsManager : MonoBehaviour
         text[3].text = (wrongAnswersWithChoise + wrongAnswersWithEnter).ToString();
         text[4].text = healthPointsSpent.ToString();
         text[5].text = Math.Round(surviveTime, 0).ToString();
-        text[6].text = Math.Round(totalRunDistance, 0).ToString();
+        text[6].text = Math.Round(totalRunDistance / 3f, 0).ToString();
         text[7].text = booksThrown.ToString();
 
         var data = SaveManager.Load<SaveData>(ConfigManager.saveKey);
         if (data != null)
         {
-            databaseManager.AddPlayer(data.nickname, questionsWithChoise + questionsWithEnter, killedFools);
+            databaseManager.AddPlayer(data.nickname, questionsWithChoise * 10 + questionsWithEnter * 50, 
+                killedFools, Convert.ToInt32(Math.Round(surviveTime, 0)),
+                Convert.ToInt32(Math.Round(totalRunDistance / 3f, 0)), booksThrown);
         }
     }
 

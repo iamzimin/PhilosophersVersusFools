@@ -12,15 +12,21 @@ public class FirebaseDatabaseManager : MonoBehaviour
 {
     public class Player
     {
-        public string name;
+        public string nickname;
         public int score;
         public int kills;
+        public int time;
+        public int distance;
+        public int books;
 
-        public Player(string name, int score, int kills)
+        public Player(string nickname, int score, int kills, int time, int distance, int books)
         {
-            this.name = name;
+            this.nickname = nickname;
             this.score = score;
             this.kills = kills;
+            this.time = time;
+            this.distance = distance;
+            this.books = books;
         }
     }
 
@@ -31,18 +37,21 @@ public class FirebaseDatabaseManager : MonoBehaviour
 
     void Awake()
     {
-        //userID = SystemInfo.deviceUniqueIdentifier;
         databaseReference = FirebaseDatabase.DefaultInstance.RootReference;
-        //GetDataFromFirebase();
-        /*AddPlayer("123", 456, 678);
-        AddPlayer("12533", 45346, 6345348);
-        AddPlayer("1", 4, 6);*/
-        //StartCoroutine(GetDataFromFirebase());
+/*
+        AddPlayer("hello", 10, 15, 166, 544, 35);
+        AddPlayer("world", 10, 145, 16, 544, 5);
+        AddPlayer("its", 10, 165, 66, 544, 58);
+        AddPlayer("game", 10, 415, 166, 44, 33);
+        AddPlayer("for", 10, 15, 16, 54, 35);
+        AddPlayer("univercity", 1, 15, 166, 544, 385);
+        AddPlayer("hehehe", 10, 15, 146, 584, 3);
+        AddPlayer("hahaha", 10, 25, 16, 44, 35);*/
     }
 
-    public void AddPlayer(string nickname, int score, int kills)
+    public void AddPlayer(string nickname, int score, int kills, int time, int distance, int books)
     {
-        Player newPlayer = new Player(nickname, score, kills);
+        Player newPlayer = new Player(nickname, score, kills, time, distance, books);
         string json = JsonUtility.ToJson(newPlayer);
 
         databaseReference.Child("leaderboard").Push().SetRawJsonValueAsync(json);
