@@ -14,7 +14,8 @@ public class LeaderboardManager : MonoBehaviour
 
     void Start()
     {
-        databaseManager.StartCoroutine(databaseManager.GetDataFromFirebase());
+        //databaseManager.StartCoroutine(databaseManager.GetDataFromFirebase());
+        databaseManager.GetDataFromFirebase();
         //this.leaderboard = databaseManager.leaderboard;
     }
 
