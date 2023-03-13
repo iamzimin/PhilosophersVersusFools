@@ -6,8 +6,9 @@ using UnityEngine;
 
 public class StatisticsManager : MonoBehaviour
 {
+    public FirebaseDatabaseManager databaseManager;
     public GameObject gameOverGameObject;
-    public CanvasGroup gameOverCanvasGroup;
+    private CanvasGroup gameOverCanvasGroup;
     public TextMeshProUGUI[] text;
     public float lerpTime = 0f;
     public bool isShowed = false;
@@ -37,6 +38,12 @@ public class StatisticsManager : MonoBehaviour
         text[5].text = Math.Round(surviveTime, 0).ToString();
         text[6].text = Math.Round(totalRunDistance, 0).ToString();
         text[7].text = booksThrown.ToString();
+
+        var data = SaveManager.Load<SaveData>(ConfigManager.saveKey);
+        if (data != null)
+        {
+            databaseManager.AddPlayer(data.nickname, questionsWithChoise + questionsWithEnter, killedFools);
+        }
     }
 
     public void DisableDeadScreen()

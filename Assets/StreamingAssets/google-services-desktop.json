@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "371341337190",
+    "firebase_url": "https://philosophers-versus-fools-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "philosophers-versus-fools",
+    "storage_bucket": "philosophers-versus-fools.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:371341337190:android:06e8212db67e73b34883a7",
+        "android_client_info": {
+          "package_name": "com.PhilosophersVersusFools"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "371341337190-7jki4acut7epv5vb5mf2jnmo7ofiffkf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBNWaL5sU0IrDZmSCwnZh3Qm1Cp9UcFF7A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "371341337190-7jki4acut7epv5vb5mf2jnmo7ofiffkf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

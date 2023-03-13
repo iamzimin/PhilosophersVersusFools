@@ -361,7 +361,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healhPoint: 50
   maxHealhPoint: 50
-  power: 4
+  power: 465
   healthBar: {fileID: 2337690992193977392}
   isDead: 0
   time: 0
